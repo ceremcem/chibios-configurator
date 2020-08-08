@@ -1,15 +1,15 @@
 # Description
 
-This is the bare minimum template project to easily get up and running with [ScadaJS](https://github.com/aktos-io/scada.js).
+Generates ChibiOS configurations.
 
-# Live Demo 
+# Development 
 
-See this project live on https://aktos.io/st (scadajs-template).
+1. Setup your environment: (see ./scada.js/doc/using-virtual-environment.md)
+2. Install dependencies: `make install-deps`
 
-# Creating Webapp
+After that, start development: 
 
-A) Either create a project from scratch: [./usage-recipe.md](./usage-recipe.md).
+1. `./uidev.service` will start necessary services for development. 
+2. Open your favourite text editor to make changes.
 
-- or
-
-B) Copy and edit `this` template according to your needs: [./install.md](./install.md).
+Open http://localhost:4013 to see the application. 

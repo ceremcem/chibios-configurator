@@ -1,42 +1,18 @@
+require! 'app/tools'
 try
-    require! 'app/tools'
     require! 'aea/defaults'
     require! 'components'
-    require! './showcase/components'
-    require! 'aea/defaults2'
-    require! 'components/heavy-components'
+    #require! 'aea/defaults2'
+    #require! 'components/heavy-components'
 
     new Ractive do
         el: \body
-        template: require('./app.pug') # or require('./app.html')
+        template: require('./app.pug')
         data:
-            dataTableExample: require './showcase/data-table/settings' .settings
             appVersion: require('app-version.json')
         on:
-            dcsLive: ->
-                # Let Ractive complete rendering before fetching any other dependencies
-                simulation = 10_000ms 
-                new PNotify.success do
-                    title: "Simulating Delay"
-                    text: "Simulating #{simulation/1000} seconds of delay..."
-                    addClass: 'nonblock'
-                    
-                info = new PNotify.notice do
-                    text: "Fetching dependencies..."
-                    hide: no
-                    addClass: 'nonblock'
-
-                start = Date.now!
-                <~ sleep simulation
-                <~ getDep "js/app3.js"
-                info.close!
-                elapsed = (Date.now! - start) / 1000
-                new PNotify.info do
-                    text: "Dependencies are loaded in #{oneDecimal elapsed} s"
-                    addClass: 'nonblock'                
-
+            complete: -> 
                 # send signal to Async Synchronizers
                 @set "@shared.deps", {_all: yes}, {+deep}
-
 catch
     loadingError (e.stack or e)
