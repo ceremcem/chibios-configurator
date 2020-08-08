@@ -10,3 +10,6 @@ main-production:
 update:
 	git pull
 	git submodule update --recursive --init
+
+touch-app-version:
+	@(touch scada.js/lib/app-version.json)
