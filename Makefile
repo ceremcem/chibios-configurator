@@ -13,3 +13,9 @@ update:
 
 touch-app-version:
 	@(touch scada.js/lib/app-version.json)
+
+release:
+	(cd scada.js && make production)
+
+development:
+	@(cd scada.js && make development)
