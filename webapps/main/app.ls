@@ -2,8 +2,8 @@ require! 'app/tools'
 try
     require! 'aea/defaults'
     require! 'components'
-    #require! 'aea/defaults2'
-    #require! 'components/heavy-components'
+    require! 'aea/defaults2'
+    require! 'components/heavy-components'
 
     new Ractive do
         el: \body
