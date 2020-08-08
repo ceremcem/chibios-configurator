@@ -1,0 +1,36 @@
+// Setup global logger
+logger
+
+// Setup the router (offset is needed because of the fixed menu)
+router(offset="50")
+
+//
+    Rest is the Ractive template that you already know.     
+    SemanticUI, Pug and Livescript is supported out of the box.
+    
+- var gh = "https://github.com/aktos-io"
+- var sourceAddr = gh + "/scadajs-template"
+- var demoAddr = "https://aktos.io/st"
+- var scadajsAddr = gh + "/scada.js"
+- var issues = sourceAddr + "/issues"
+
+
++unless('hideTopMenu')
+    .ui.fixed.inverted.menu
+        a.inverted.green.item(href="#/") Home 
+
+scene(name="NOTFOUND")
+    .ui.message.red 
+        .content.
+            No such page can be found. 
+            No one created #[b {{@shared.router.scene}}] scene yet.
+        
+
+scene(default public)
+    .ui.container
+        .ui.basic.segment 
+            .ui.big.message(style="padding: 150px auto")
+                h1.ui.big.header ChibiOS Configurator  
+
+
+    include ./analog-config.pug

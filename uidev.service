@@ -1,0 +1,15 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+HEADLESS=false
+. $DIR/scada.js/tools/service-runner/tmux-launch
+sname=$(calc-session-name "$0")
+launch-service $sname
+
+# Virtual Environment support
+. $DIR/scada.js/venv
+tmux setenv -t $sname 'VIRTUAL_ENV' $SCADAJS_VENV
+
+# run commands in tmux session
+run-in-tmux "cd scada.js" "export APP=main" "make development"
+run-in-tmux "cd servers" "./run-ls io-server.ls"
+run-in-tmux "cd servers" './run-ls webserver.ls --development'
