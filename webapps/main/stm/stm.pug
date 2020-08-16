@@ -1,0 +1,5 @@
+.ui.container
+    h3.ui.top.attached.header STM Configuration
+    .ui.bottom.attached.segment 
+        ack-button(on-click="lsMcu" my-param="hello") List Available MCU Models
+        dropdown(simple-data="{{mcuList}}")

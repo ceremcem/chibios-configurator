@@ -1,0 +1,28 @@
+{
+  "name": "chibi-configurator",
+  "version": "0.1.0",
+  "description": "ChibiOS Hardware Configuration Tool",
+  "main": "door",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceremcem/chibios-configurator.git"
+  },
+  "keywords": [
+    "chibios",
+    "hardware",
+    "configuration",
+    "tool"
+  ],
+  "author": "Cerem Cem ASLAN",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ceremcem/chibios-configurator/issues"
+  },
+  "homepage": "https://github.com/ceremcem/chibios-configurator#readme",
+  "dependencies": {
+    "xml-js": "^1.6.11"
+  }
+}

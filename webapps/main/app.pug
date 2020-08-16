@@ -1,23 +1,38 @@
+// Setup realtime layer 
+aktos-dcs(on-live="dcsLive") 
+
 // Setup global logger
 logger
 
 // Setup the router (offset is needed because of the fixed menu)
-router(offset="80")
+router(offset="50")
 
+//
+    Rest is the Ractive template that you already know.     
+    SemanticUI, Pug and Livescript is supported out of the box.
+    
 - var gh_addr = "https://github.com/ceremcem/chibios-configurator"
 
-.ui.fixed.inverted.menu
-    a.inverted.green.item(href="#/") Home 
 
-    .right.item
-        +with('appVersion')
-            a(href=`${gh_addr}/tree/{{.commit}}`) {{ .commit }} ({{.count}}) {{#if .dirty}}<b>Dirty</b>{{/if}}
++unless('hideTopMenu')
+    .ui.fixed.inverted.menu
+        a.inverted.green.item(href="#/") Home 
+        .right.item
+            +with('appVersion')
+                a(href=`${gh_addr}/tree/{{.commit}}`) {{ .commit }} ({{.count}}) {{#if .dirty}}<b>Dirty</b>{{/if}}
 
 scene(name="NOTFOUND")
     .ui.message.red 
         .content.
             No such page can be found. 
             No one created #[b {{@shared.router.scene}}] scene yet.
+        
+scene(name="UNAUTHORIZED")
+    .ui.message.orange
+        .content.
+            You are not authorized for the page you requested.
 
 scene(default public)
-    include ./analog-config.pug
+    stm
+    .spacer
+        
