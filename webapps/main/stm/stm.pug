@@ -1,5 +1,18 @@
 .ui.container
     h3.ui.top.attached.header STM Configuration
     .ui.bottom.attached.segment 
-        ack-button(on-click="lsMcu" my-param="hello") List Available MCU Models
-        dropdown(simple-data="{{mcuList}}")
+        .ui.two.column.stackable.grid
+            .row
+                .column
+                    ack-button(on-click="lsMcu" my-param="hello") List Available MCU's
+                    dropdown(
+                        simple-data="{{mcuList}}" 
+                        selected-key="{{selected.mcu}}"
+                        on-select="subFamilySelected")
+
+                    .ui.tag.label.mini ({{mcuList.length}})
+                .column 
+                    h3 Peripherals for #[b {{selected.mcu || selected.unavailable}}]
+                    debug-obj(obj="{{selected.datasheet}}" public)
+
+            //- debug .row: pre {{ JSON.stringify(., null, 2)}}
