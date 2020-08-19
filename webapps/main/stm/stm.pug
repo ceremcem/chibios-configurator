@@ -1,18 +1,65 @@
 .ui.container
     h3.ui.top.attached.header STM Configuration
     .ui.bottom.attached.segment 
-        .ui.two.column.stackable.grid
+        .ui.stackable.grid
             .row
-                .column
-                    ack-button(on-click="lsMcu" my-param="hello") List Available MCU's
+                .column 
+                    ack-button(on-click="lsMcu" my-param="hello") Get Available MCU's
                     dropdown(
                         simple-data="{{mcuList}}" 
                         selected-key="{{selected.mcu}}"
                         on-select="subFamilySelected")
 
                     .ui.tag.label.mini ({{mcuList.length}})
+
+            .row
+                .column
+                    btn.green.mini(on-click="refreshSelected"): i.icon.refresh
+                    debug-obj(obj="{{selected.pins}}" public)
+
+            .row
                 .column 
+                    h3 Pinout for #[b {{selected.mcu || selected.unavailable}}]
+                    //debug-obj(obj="{{selected.datasheet}}" public)
+                    table.ui.celled.fixed.striped.table
+                        thead 
+                            tr 
+                                th(style="text-align: center; width: 10ch") Pin#
+                                th(align="left", style="width: 20ch") Name
+                                th(align="left", style="width: 10ch") Type 
+                                th(align="left") Signal Name
+                                th(align="left") Signal Mode 
+                        tbody
+                            +each('selected.pins')
+                                //- temporary variables 
+                                | {{ @context.set('._disabled', (.Type !== 'I/O')) && '' }}
+
+                                tr(
+                                    class="{{#if ._disabled}}disabled{{/if}}"
+                                    )
+                                    td(style="text-align: center")
+                                        btn.mini(
+                                            on-click="pinSelected"
+                                            pin="{{.Position}}"
+                                            class="{{#if ! ._disabled}}green{{else}}basic{{/if}}"
+                                            ) {{.Position}}
+                                    td {{.Name}} 
+                                    td ({{.Type}})
+                                    td {{ getSignalName(.signal) }} 
+                                    td {{ getSignalMode(.signal) }}
+                                
+
+            .row 
+                .column
                     h3 Peripherals for #[b {{selected.mcu || selected.unavailable}}]
-                    debug-obj(obj="{{selected.datasheet}}" public)
+                    .ui.label.green {{newSetting.pin || selected.unavailable}}
+                    dropdown(
+                        simple-data="{{peripherals}}"
+                        selected-key="{{newSetting.peripheral}}")
+
+                    debug-obj(obj="{{configuration}}" public)
+
+                    ack-button.green(on-click="configurePin") Accept
+                    ack-button.red(on-click="deletePinConfig") Delete
 
             //- debug .row: pre {{ JSON.stringify(., null, 2)}}
