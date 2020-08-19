@@ -21,7 +21,7 @@ new class Datasheet extends Actor
             @send-response msg, {mcu-list}
 
         @on-topic "@datasheet.mcu-info", (msg) ~> 
-            log "Mcu info requested"
+            log "Mcu info requested: #{msg.data.id}"
             error = false 
             mcu-info = null 
             try 
