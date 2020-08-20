@@ -1,0 +1,12 @@
++if('newSetting.peripheralObj')
+    +with('newSetting.peripheralObj.type as type')
+        +iff('type === "din"')
+            dropdown(
+                data="{{peripheralConfigs.din}}"
+                selected-key="{{newSetting.config.mode}}")
+        +elif('type === "dout"')
+            dropdown(
+                data="{{peripheralConfigs.dout}}"
+                selected-key="{{newSetting.config.mode}}")
+        +endif
+        

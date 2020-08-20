@@ -22,6 +22,33 @@ Ractive.components['stm'] = Ractive.extend do
         newSetting: 
             pin: null 
             peripheral: null 
+            config: {}
+
+        peripheralConfigs:
+            din:
+                * {id: \pullup, name: "Pull up"}
+                * {id: \pulldown, name: "Pull down"}
+                * {id: \float, name: "Float"}
+
+            dout:
+                * {id: \pushpull, name: "Push-pull"}
+                * {id: \opencollector, name: "Open collector"}
+
+        # Format: 
+        #   STM_CODE(REGEX): [{TYPE: HUMAN_READABLE_NAME}, ...]
+        replace-map:
+            "GPIO"                      : 
+                * din: "Digital Input" 
+                * dout: "Digital Output"
+            "TIM([0-9]+)_CH([0-9]+)$"   :
+                * pwm: "PWM $1_$2"
+                * timer: "Timer $1_$2"
+            "ADC_IN([0-9]+)"            : adc-in: "Analog Input $1"
+            "I2C([0-9]+)_SCL"           : i2c-clock: "I2C ($1) Clock"
+            "I2C([0-9]+)_SDA"           : i2c-data: "I2C ($1) Data"
+            "SYS_SWCLK"                 : swclk: "SWD Clock"
+            "SYS_SWDIO"                 : swdio: "SWD Data"
+
 
         # Format: {"#mcuType": {"#pin": config}}
         configuration: {}
@@ -57,26 +84,11 @@ Ractive.components['stm'] = Ractive.extend do
                 |> map (.Name)
                 |> unique
 
-            # Format: 
-            #   STM_CODE(REGEX): [{TYPE: HUMAN_READABLE_NAME}, ...]
-            replace-map = 
-                "GPIO"                      : 
-                    * din: "Digital Input" 
-                    * dout: "Digital Output"
-                "TIM([0-9]+)_CH([0-9]+)$"   :
-                    * pwm: "PWM $1_$2"
-                    * timer: "Timer $1_$2"
-                "ADC_IN([0-9]+)"            : adc-in: "ADC Input $1"
-                "I2C([0-9]+)_SCL"           : i2c-clock: "I2C ($1) Clock"
-                "I2C([0-9]+)_SDA"           : i2c-data: "I2C ($1) Data"
-                "SYS_SWCLK"                 : swclk: "SWD Clock"
-                "SYS_SWDIO"                 : swdio: "SWD Data"
-
             #console.log "replace map: ", replace-map
             human-readable = []
             for stm-code in peripherals
                 replaced = false
-                for short, meaning of replace-map
+                for short, meaning of @get \replaceMap
                     short-r = new RegExp short
                     #console.log "Examining if #p matches with #short", short-r
                     if stm-code.match short-r
@@ -157,25 +169,13 @@ Ractive.components['stm'] = Ractive.extend do
             @set "configuration.#{@get 'selected.mcu'}", {
                 "#{pin-number}":
                     peripheral: @get \newSetting.peripheralObj
-            }, {+deep}
+                    config: @get \newSetting.config
+                }, {+deep}
 
             btn.state \done...
 
         pinPeripheralSelected: (ctx, item, progress) -> 
             console.log "pinPeripheralSelected, item is: ", item 
             @set \newSetting.peripheralObj, item 
-            {type} = item
-            opts = switch type 
-                | 'din' => x = 
-                    * "Pull up"
-                    * "Pull down"
-                    * "Float"
-                | 'dout' => x = 
-                    * "Push-pull"
-                    * "Open collector"
-                |_ => []
-            console.log "peripheral options for #type is", opts 
-            @set \newSetting.peripheralConfSelection, null 
-            @set \newSetting.peripheralConf, opts 
             progress!
 

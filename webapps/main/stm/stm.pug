@@ -68,17 +68,14 @@
                                 on-select="pinPeripheralSelected"
                                 disabled="{{newSetting.pin === null}}")
 
-                            dropdown(
-                                simple-data="{{newSetting.peripheralConf}}"
-                                selected-key="{{newSetting.peripheralConfSelection}}"
-                                disabled="{{newSetting.peripheralObj == null || newSetting.peripheralObj == undefined}}")
-
-                            debug-obj(public title="pinPeripherals" obj="{{pinPeripherals}}")
-                            debug-obj(public title="newSetting" obj="{{newSetting}}")
+                            include ./peripheral-config.pug
                         .field 
                             .ui.buttons
                                 ack-button.green(on-click="configurePin") Accept
                                 ack-button.red(on-click="deletePinConfig") Delete
+
+                    debug-obj(public title="pinPeripherals" obj="{{pinPeripherals}}")
+                    debug-obj(public title="newSetting" obj="{{newSetting}}")
 
                 .eight.wide.column
                     .ui.form 
