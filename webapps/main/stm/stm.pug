@@ -35,11 +35,11 @@
                         tbody
                             +each('selected.pins')
                                 //- temporary variables 
-                                +with('(.Type !== "I/O") as _disabled')
+                                +with('(.Type !== "I/O") as notIo')
                                     //-| {{ @context.set('._disabled', (.Type !== 'I/O')) && '' }}
 
                                     tr(
-                                        class="{{#if _disabled}}disabled{{/if}} \
+                                        class="{{#if notIo}}disabled{{/if}} \
                                         {{#if .Position === newSetting.pin}}active{{/if}} \
                                         "
                                         )
@@ -47,7 +47,7 @@
                                             btn.mini(
                                                 on-click="pinSelected"
                                                 pin="{{.Position}}"
-                                                class="{{#if ! _disabled}}green{{else}}basic{{/if}}"
+                                                class="{{#if notIo}}basic{{else}}green{{/if}}"
                                                 ) {{.Position}}
                                         td {{.Name}} 
                                         td ({{.Type}})
@@ -61,18 +61,25 @@
                     .ui.form
                         .field
                             .ui.label.green {{newSetting.pin || selected.unavailable}}
-                        .field 
-                            dropdown(
-                                data="{{pinPeripherals}}"
-                                selected-key="{{newSetting.peripheralSelection}}"
-                                on-select="pinPeripheralSelected"
-                                disabled="{{newSetting.pin === null}}")
+                        +iff('configuration[selected.mcu][newSetting.pin] \
+                            && ! overrideAllowed')
+                            //- this pin is already configured, confirm to override
+                            .field
+                                btn.orange(on-click="@.set('overrideAllowed', true)") Edit
+                        +else
+                            .field 
+                                dropdown(
+                                    data="{{pinPeripherals}}"
+                                    selected-key="{{newSetting.peripheral.id}}"
+                                    on-select="pinPeripheralSelected"
+                                    disabled="{{newSetting.pin === null}}")
 
-                            include ./peripheral-config.pug
-                        .field 
-                            .ui.buttons
-                                ack-button.green(on-click="configurePin") Accept
-                                ack-button.red(on-click="deletePinConfig") Delete
+                                include ./peripheral-config.pug
+                            .field 
+                                .ui.buttons
+                                    ack-button.green(on-click="configurePin") Accept
+                                    ack-button.red(on-click="deletePinConfig") Delete
+                        +endif
 
                     debug-obj(public title="pinPeripherals" obj="{{pinPeripherals}}")
                     debug-obj(public title="newSetting" obj="{{newSetting}}")

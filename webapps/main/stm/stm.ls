@@ -158,7 +158,15 @@ Ractive.components['stm'] = Ractive.extend do
         pinSelected: (ctx) -> 
             return unless btn=ctx?component
             @set \newSetting, {} 
-            @set \newSetting.pin, btn.get \pin 
+            pin = btn.get \pin 
+            if @get "configuration.#{@get 'selected.mcu'}.#{pin}"
+                config = that 
+                    ..pin = pin 
+                console.log "found in configuration, loading config: ", config 
+            else 
+                config = {pin}
+            @set \newSetting, config 
+            @set "overrideAllowed", false
             scroll-to 'assign-peripheral'
 
         configurePin: (ctx) -> 
@@ -167,15 +175,15 @@ Ractive.components['stm'] = Ractive.extend do
             unless pin-number?
                 return btn.error "Pin number is required."
             @set "configuration.#{@get 'selected.mcu'}", {
-                "#{pin-number}":
-                    peripheral: @get \newSetting.peripheralObj
+                "#{pin-number}": 
+                    peripheral: @get \newSetting.peripheral
                     config: @get \newSetting.config
                 }, {+deep}
-
+            @set "overrideAllowed", false
             btn.state \done...
 
         pinPeripheralSelected: (ctx, item, progress) -> 
             console.log "pinPeripheralSelected, item is: ", item 
-            @set \newSetting.peripheralObj, item 
+            @set \newSetting.peripheral, item 
             progress!
 

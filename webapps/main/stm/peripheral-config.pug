@@ -1,5 +1,5 @@
-+if('newSetting.peripheralObj')
-    +with('newSetting.peripheralObj.type as type')
++if('newSetting.peripheral')
+    +with('newSetting.peripheral.type as type')
         +iff('type === "din"')
             dropdown(
                 data="{{peripheralConfigs.din}}"
