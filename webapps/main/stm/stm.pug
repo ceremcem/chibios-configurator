@@ -15,12 +15,15 @@
             .row
                 .column
                     btn.green.mini(on-click="refreshSelected"): i.icon.refresh
-                    debug-obj(obj="{{selected.pins}}" public)
+                    debug-obj(title="selected.pins" obj="{{selected.pins}}" public)
 
             .row
                 .column 
                     h3 Pinout for #[b {{selected.mcu || selected.unavailable}}]
                     //debug-obj(obj="{{selected.datasheet}}" public)
+
+                    a(href="#assign-peripheral") Assign Peripheral ->
+
                     table.ui.celled.fixed.striped.table
                         thead 
                             tr 
@@ -32,34 +35,53 @@
                         tbody
                             +each('selected.pins')
                                 //- temporary variables 
-                                | {{ @context.set('._disabled', (.Type !== 'I/O')) && '' }}
+                                +with('(.Type !== "I/O") as _disabled')
+                                    //-| {{ @context.set('._disabled', (.Type !== 'I/O')) && '' }}
 
-                                tr(
-                                    class="{{#if ._disabled}}disabled{{/if}}"
-                                    )
-                                    td(style="text-align: center")
-                                        btn.mini(
-                                            on-click="pinSelected"
-                                            pin="{{.Position}}"
-                                            class="{{#if ! ._disabled}}green{{else}}basic{{/if}}"
-                                            ) {{.Position}}
-                                    td {{.Name}} 
-                                    td ({{.Type}})
-                                    td {{ getSignalName(.signal) }} 
-                                    td {{ getSignalMode(.signal) }}
+                                    tr(
+                                        class="{{#if _disabled}}disabled{{/if}} \
+                                        {{#if .Position === newSetting.pin}}active{{/if}} \
+                                        "
+                                        )
+                                        td(style="text-align: center")
+                                            btn.mini(
+                                                on-click="pinSelected"
+                                                pin="{{.Position}}"
+                                                class="{{#if ! _disabled}}green{{else}}basic{{/if}}"
+                                                ) {{.Position}}
+                                        td {{.Name}} 
+                                        td ({{.Type}})
+                                        td {{ getSignalName(.signal) }} 
+                                        td {{ getSignalMode(.signal) }}
                                 
-
             .row 
-                .column
-                    h3 Peripherals for #[b {{selected.mcu || selected.unavailable}}]
-                    .ui.label.green {{newSetting.pin || selected.unavailable}}
-                    dropdown(
-                        simple-data="{{peripherals}}"
-                        selected-key="{{newSetting.peripheral}}")
+                anchor assign-peripheral
+                .eight.wide.column
+                    h3 Peripheral assignment by Pin
+                    .ui.form
+                        .field
+                            .ui.label.green {{newSetting.pin || selected.unavailable}}
+                        .field 
+                            dropdown(
+                                data="{{pinPeripherals}}"
+                                selected-key="{{newSetting.peripheralSelection}}"
+                                on-select="pinPeripheralSelected"
+                                disabled="{{newSetting.pin === null}}")
 
-                    debug-obj(obj="{{configuration}}" public)
+                            dropdown(
+                                simple-data="{{newSetting.peripheralConf}}"
+                                selected-key="{{newSetting.peripheralConfSelection}}"
+                                disabled="{{newSetting.peripheralObj == null || newSetting.peripheralObj == undefined}}")
 
-                    ack-button.green(on-click="configurePin") Accept
-                    ack-button.red(on-click="deletePinConfig") Delete
+                            debug-obj(public title="pinPeripherals" obj="{{pinPeripherals}}")
+                            debug-obj(public title="newSetting" obj="{{newSetting}}")
+                        .field 
+                            .ui.buttons
+                                ack-button.green(on-click="configurePin") Accept
+                                ack-button.red(on-click="deletePinConfig") Delete
 
-            //- debug .row: pre {{ JSON.stringify(., null, 2)}}
+                .eight.wide.column
+                    .ui.form 
+                        .field 
+                            label Configuration
+                            textarea(readonly twoway="false") {{ JSON.stringify(configuration, null, 2)}}

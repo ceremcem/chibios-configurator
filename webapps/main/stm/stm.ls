@@ -1,5 +1,9 @@
 require! 'actors': {BrowserStorage}
-require! 'prelude-ls': {values, map, compact, join}
+require! 'prelude-ls': {
+    values, map, compact, join, flatten, unique, 
+    find, filter
+}
+require! 'components/router/tools': {scroll-to}
 
 storage = new BrowserStorage "scene.stm"
 
@@ -36,8 +40,65 @@ Ractive.components['stm'] = Ractive.extend do
             |> join ','
 
     computed:
-        peripherals: -> 
-            <[ SPI USART I2C PWM Analog Input Output ]>
+        availablePeripherals: -> 
+            return @get \selected.pins
+                |> map (.signal)
+                |> flatten 
+                |> compact 
+                |> map (.Name)
+                |> unique
+        pinPeripherals: -> 
+            return [] unless pin=@get \newSetting.pin
+            peripherals = @get \selected.pins
+                |> find (.Position is pin)
+                |> (.signal)
+                |> flatten 
+                |> compact 
+                |> map (.Name)
+                |> unique
+
+            # Format: 
+            #   STM_CODE(REGEX): [{TYPE: HUMAN_READABLE_NAME}, ...]
+            replace-map = 
+                "GPIO"                      : 
+                    * din: "Digital Input" 
+                    * dout: "Digital Output"
+                "TIM([0-9]+)_CH([0-9]+)$"   :
+                    * pwm: "PWM $1_$2"
+                    * timer: "Timer $1_$2"
+                "ADC_IN([0-9]+)"            : adc-in: "ADC Input $1"
+                "I2C([0-9]+)_SCL"           : i2c-clock: "I2C ($1) Clock"
+                "I2C([0-9]+)_SDA"           : i2c-data: "I2C ($1) Data"
+                "SYS_SWCLK"                 : swclk: "SWD Clock"
+                "SYS_SWDIO"                 : swdio: "SWD Data"
+
+            #console.log "replace map: ", replace-map
+            human-readable = []
+            for stm-code in peripherals
+                replaced = false
+                for short, meaning of replace-map
+                    short-r = new RegExp short
+                    #console.log "Examining if #p matches with #short", short-r
+                    if stm-code.match short-r
+                        meaning = [] ++ meaning # ensure it is array 
+                        for replacement-obj in meaning 
+                            for type, replacement of replacement-obj
+                                null # for object destruction 
+                            x = stm-code.replace short-r, replacement
+                            #console.log "type is: #type, replacement is: #x"
+                            human-readable.push do 
+                                id: x  
+                                name: x
+                                stm: stm-code
+                                type: type   
+                        replaced = true 
+                        break 
+                unless replaced 
+                    human-readable.push do 
+                        id: stm-code
+                        name: stm-code
+                    #console.log "no replacement found, appending original: #p"
+            return human-readable
 
     on:
         init: -> 
@@ -61,6 +122,7 @@ Ractive.components['stm'] = Ractive.extend do
         subFamilySelected: (ctx, item, progress) -> 
             return unless dd=ctx?component 
             @set \selected.mcu, item.id
+            @set \selected.datasheet, null
             err, res <~ dd.actor.send-request "@datasheet.mcu-info", {id: item.id}
             if datasheet=res?.data?.info
                 @set \selected.datasheet, datasheet
@@ -83,15 +145,37 @@ Ractive.components['stm'] = Ractive.extend do
 
         pinSelected: (ctx) -> 
             return unless btn=ctx?component
+            @set \newSetting, {} 
             @set \newSetting.pin, btn.get \pin 
+            scroll-to 'assign-peripheral'
 
         configurePin: (ctx) -> 
             return unless btn=ctx?component
+            pin-number = @get 'newSetting.pin'
+            unless pin-number?
+                return btn.error "Pin number is required."
             @set "configuration.#{@get 'selected.mcu'}", {
-                "#{@get 'newSetting.pin'}":
-                    peripheral: @get \newSetting.peripheral
+                "#{pin-number}":
+                    peripheral: @get \newSetting.peripheralObj
             }, {+deep}
 
             btn.state \done...
 
-        
+        pinPeripheralSelected: (ctx, item, progress) -> 
+            console.log "pinPeripheralSelected, item is: ", item 
+            @set \newSetting.peripheralObj, item 
+            {type} = item
+            opts = switch type 
+                | 'din' => x = 
+                    * "Pull up"
+                    * "Pull down"
+                    * "Float"
+                | 'dout' => x = 
+                    * "Push-pull"
+                    * "Open collector"
+                |_ => []
+            console.log "peripheral options for #type is", opts 
+            @set \newSetting.peripheralConfSelection, null 
+            @set \newSetting.peripheralConf, opts 
+            progress!
+

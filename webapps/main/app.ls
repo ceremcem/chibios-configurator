@@ -10,6 +10,7 @@ try
     loadingMessage "Getting vendor2.js (2/3) (#{duration t1 - appStart})"
     <~ getDep "js/vendor2.js"
     t2 = Date.now!
+
     loadingMessage "Getting app2.js (3/3) (#{duration t2 - appStart})"
     <~ getDep "js/app2.js"
     t3 = Date.now!
