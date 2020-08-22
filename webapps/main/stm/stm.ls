@@ -144,7 +144,7 @@ Ractive.components['stm'] = Ractive.extend do
             return unless btn=ctx?component
             @set \newSetting, {} 
             pin = btn.get \pin 
-            _config = (@get "configuration.#{@get 'selected.mcu'}")[pin]
+            _config = (@get "configuration.#{@get 'selected.mcu'}")?[pin]
             if _config?
                 config = JSON.parse JSON.stringify _config 
                 config.pin = pin 
