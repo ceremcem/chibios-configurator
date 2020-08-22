@@ -1,4 +1,5 @@
 install-deps:
+	npm i
 	cd scada.js; make install-deps CONF=../dcs-modules.txt
 
 main-dev:
