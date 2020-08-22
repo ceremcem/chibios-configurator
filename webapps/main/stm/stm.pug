@@ -3,8 +3,8 @@
     .ui.bottom.attached.segment 
         .ui.stackable.grid
             .row
-                .column 
-                    ack-button(on-click="lsMcu" my-param="hello") Get Available MCU's
+                .column
+                    ack-button(on-click="lsMcu") Get Available MCU's
                     dropdown(
                         simple-data="{{mcuList}}" 
                         selected-key="{{selected.mcu}}"
@@ -23,36 +23,7 @@
                     //debug-obj(obj="{{selected.datasheet}}" public)
 
                     a(href="#assign-peripheral") Assign Peripheral ->
-
-                    table.ui.celled.fixed.striped.table
-                        thead 
-                            tr 
-                                th(style="text-align: center; width: 10ch") Pin#
-                                th(align="left", style="width: 20ch") Name
-                                th(align="left", style="width: 10ch") Type 
-                                th(align="left") Signal Name
-                                th(align="left") Signal Mode 
-                        tbody
-                            +each('selected.pins')
-                                //- temporary variables 
-                                +with('(.Type !== "I/O") as notIo')
-                                    //-| {{ @context.set('._disabled', (.Type !== 'I/O')) && '' }}
-
-                                    tr(
-                                        class="{{#if notIo}}disabled{{/if}} \
-                                        {{#if .Position === newSetting.pin}}active{{/if}} \
-                                        "
-                                        )
-                                        td(style="text-align: center")
-                                            btn.mini(
-                                                on-click="pinSelected"
-                                                pin="{{.Position}}"
-                                                class="{{#if notIo}}basic{{else}}green{{/if}}"
-                                                ) {{.Position}}
-                                        td {{.Name}} 
-                                        td ({{.Type}})
-                                        td {{ getSignalName(.signal) }} 
-                                        td {{ getSignalMode(.signal) }}
+                    include ./pinout-table.pug
                                 
             .row 
                 anchor assign-peripheral
@@ -67,25 +38,12 @@
                             .field
                                 btn.orange(on-click="@.set('overrideAllowed', true)") Edit
                         +else
-                            .field 
-                                dropdown(
-                                    data="{{pinPeripherals}}"
-                                    selected-key="{{newSetting.peripheral.id}}"
-                                    on-select="pinPeripheralSelected"
-                                    disabled="{{newSetting.pin === null}}")
-
-                                include ./peripheral-config.pug
-                            .field 
-                                .ui.buttons
-                                    ack-button.green(on-click="configurePin") Accept
-                                    ack-button.red(on-click="deletePinConfig") Delete
+                            include ./peripheral-config.pug
                         +endif
-
-                    debug-obj(public title="pinPeripherals" obj="{{pinPeripherals}}")
-                    debug-obj(public title="newSetting" obj="{{newSetting}}")
-
                 .eight.wide.column
                     .ui.form 
                         .field 
                             label Configuration
-                            textarea(readonly twoway="false") {{ JSON.stringify(configuration, null, 2)}}
+                            json-edit(value="{{configuration}}" style="min-height: 400px")
+
+    .spacer

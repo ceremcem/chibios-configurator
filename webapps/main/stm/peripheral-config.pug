@@ -1,12 +1,23 @@
-+if('newSetting.peripheral')
-    +with('newSetting.peripheral.type as type')
-        +iff('type === "din"')
-            dropdown(
-                data="{{peripheralConfigs.din}}"
-                selected-key="{{newSetting.config.mode}}")
-        +elif('type === "dout"')
-            dropdown(
-                data="{{peripheralConfigs.dout}}"
-                selected-key="{{newSetting.config.mode}}")
-        +endif
-        
+.field 
+    dropdown(
+        data="{{pinPeripherals}}"
+        selected-key="{{newSetting.peripheral.id}}"
+        on-select="pinPeripheralSelected"
+        disabled="{{newSetting.pin === null}}")
+
+.field
+    +if('newSetting.peripheral')
+        +with('newSetting.peripheral.type as type')
+            +iff('type === "din"')
+                dropdown(
+                    data="{{peripheralConfigs.din}}"
+                    selected-key="{{newSetting.config.mode}}")
+            +elif('type === "dout"')
+                dropdown(
+                    data="{{peripheralConfigs.dout}}"
+                    selected-key="{{newSetting.config.mode}}")
+            +endif
+.field 
+    .ui.buttons
+        ack-button.green(on-click="configurePin") Accept
+        ack-button.red(on-click="deletePinSetting") Delete

@@ -1,0 +1,44 @@
+table.ui.celled.fixed.table
+    thead 
+        tr 
+            th(style="text-align: center; width: 10ch") Pin#
+            th(align="left", style="width: 20ch") Name
+            th(align="left", style="width: 10ch") Type 
+            th(align="left") Configuration
+            th(align="left") Modes
+    tbody
+        +each('selected.pins')
+            //- temporary variables 
+            +with('(.Type !== "I/O") as notIo \
+                , configuration[selected.mcu][.Position] as configured \
+                ')
+
+                tr(
+                    class="{{#if notIo}}disabled{{/if}} \
+                    {{#if .Position === newSetting.pin}}active{{/if}} \
+                    {{#if configured}}positive{{/if}} \
+                    "
+                    )
+                    td(style="text-align: center")
+                        btn.mini(
+                            on-click="pinSelected"
+                            pin="{{.Position}}"
+                            class="{{#if notIo}} \
+                                basic \
+                            {{else}} \
+                                {{#if configured}} \
+                                    green \
+                                {{else}} \
+                                    gray \
+                                {{/if}} \
+                            {{/if}}"
+                            ) {{.Position}}
+                    td {{.Name}} 
+                    td ({{.Type}})
+                    td.
+                        {{ configured.peripheral["name"] }}
+                        {{#if configured.config}}
+                            ({{ readableJSON(configured.config) }})
+                        {{/if}}
+
+                    td {{getSignalName(.signal)}}

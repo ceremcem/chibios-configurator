@@ -4,6 +4,8 @@ require! 'prelude-ls': {
     find, filter
 }
 require! 'components/router/tools': {scroll-to}
+require! './peripheral-defs': {replace-map, peripheralConfigs}
+require! 'aea': {merge}
 
 storage = new BrowserStorage "scene.stm"
 
@@ -24,34 +26,12 @@ Ractive.components['stm'] = Ractive.extend do
             peripheral: null 
             config: {}
 
-        peripheralConfigs:
-            din:
-                * {id: \pullup, name: "Pull up"}
-                * {id: \pulldown, name: "Pull down"}
-                * {id: \float, name: "Float"}
 
-            dout:
-                * {id: \pushpull, name: "Push-pull"}
-                * {id: \opencollector, name: "Open collector"}
-
-        # Format: 
-        #   STM_CODE(REGEX): [{TYPE: HUMAN_READABLE_NAME}, ...]
-        replace-map:
-            "GPIO"                      : 
-                * din: "Digital Input" 
-                * dout: "Digital Output"
-            "TIM([0-9]+)_CH([0-9]+)$"   :
-                * pwm: "PWM $1_$2"
-                * timer: "Timer $1_$2"
-            "ADC_IN([0-9]+)"            : adc-in: "Analog Input $1"
-            "I2C([0-9]+)_SCL"           : i2c-clock: "I2C ($1) Clock"
-            "I2C([0-9]+)_SDA"           : i2c-data: "I2C ($1) Data"
-            "SYS_SWCLK"                 : swclk: "SWD Clock"
-            "SYS_SWDIO"                 : swdio: "SWD Data"
-
+        replace-map: replace-map
+        peripheralConfigs: peripheralConfigs
 
         # Format: {"#mcuType": {"#pin": config}}
-        configuration: {}
+        configuration: storage.get \configuration 
 
         getSignalName: -> 
             return unless it?
@@ -66,6 +46,10 @@ Ractive.components['stm'] = Ractive.extend do
             |> map (.replace /,/g, ', ')
             |> join ','
 
+        readableJSON: (obj) -> 
+            JSON.stringify(obj)
+                .replace(/:/g, ': ')
+                .replace(/[{}"]/g, '')
     computed:
         availablePeripherals: -> 
             return @get \selected.pins
@@ -96,11 +80,11 @@ Ractive.components['stm'] = Ractive.extend do
                         for replacement-obj in meaning 
                             for type, replacement of replacement-obj
                                 null # for object destruction 
-                            x = stm-code.replace short-r, replacement
+                            name = stm-code.replace short-r, replacement
                             #console.log "type is: #type, replacement is: #x"
                             human-readable.push do 
-                                id: x  
-                                name: x
+                                id: name
+                                name: name
                                 stm: stm-code
                                 type: type   
                         replaced = true 
@@ -119,6 +103,7 @@ Ractive.components['stm'] = Ractive.extend do
                 storage
                     ..set \selected, @get \selected 
                     ..set \mcuList, @get \mcuList
+                    ..set \configuration, @get \configuration 
                 ), false
 
         lsMcu: (ctx) -> 
@@ -159,9 +144,10 @@ Ractive.components['stm'] = Ractive.extend do
             return unless btn=ctx?component
             @set \newSetting, {} 
             pin = btn.get \pin 
-            if @get "configuration.#{@get 'selected.mcu'}.#{pin}"
-                config = that 
-                    ..pin = pin 
+            _config = (@get "configuration.#{@get 'selected.mcu'}")[pin]
+            if _config?
+                config = JSON.parse JSON.stringify _config 
+                config.pin = pin 
                 console.log "found in configuration, loading config: ", config 
             else 
                 config = {pin}
@@ -174,16 +160,27 @@ Ractive.components['stm'] = Ractive.extend do
             pin-number = @get 'newSetting.pin'
             unless pin-number?
                 return btn.error "Pin number is required."
-            @set "configuration.#{@get 'selected.mcu'}", {
+
+            new-conf = 
                 "#{pin-number}": 
                     peripheral: @get \newSetting.peripheral
                     config: @get \newSetting.config
-                }, {+deep}
+
+            #console.log "New config is set:", new-conf
+            @set "configuration.#{@get 'selected.mcu'}", new-conf, {+deep}            
             @set "overrideAllowed", false
             btn.state \done...
 
+        deletePinSetting: (ctx) -> 
+            return unless btn=ctx?component
+            pin-number = @get 'newSetting.pin'
+            unless pin-number?
+                return btn.error "Pin number is required."
+
+            @delete "configuration.#{@get 'selected.mcu'}", "#{pin-number}"
+
         pinPeripheralSelected: (ctx, item, progress) -> 
-            console.log "pinPeripheralSelected, item is: ", item 
-            @set \newSetting.peripheral, item 
+            #console.log "pinPeripheralSelected, item is: ", item 
+            @set \newSetting.peripheral, item
             progress!
 
