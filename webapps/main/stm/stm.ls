@@ -176,8 +176,23 @@ Ractive.components['stm'] = Ractive.extend do
             pin-number = @get 'newSetting.pin'
             unless pin-number?
                 return btn.error "Pin number is required."
-
-            @delete "configuration.#{@get 'selected.mcu'}", "#{pin-number}"
+            answer, data <~ btn.yesno do 
+                closable: yes 
+                title: "Are you sure?"
+                template: """
+                    <div class='ui p'>
+                        Delete Pin-#{pin-number}?
+                    </div>
+                    """
+            if answer is \yes 
+                @delete "configuration.#{@get 'selected.mcu'}", "#{pin-number}"
+                PNotify.success do 
+                    text: "Removed Pin-#{pin-number}"
+                    addClass: "nonblock"                
+            else 
+                PNotify.info do 
+                    text: "Not removing Pin-#{pin-number}"
+                    addClass: "nonblock"
 
         pinPeripheralSelected: (ctx, item, progress) -> 
             #console.log "pinPeripheralSelected, item is: ", item 
