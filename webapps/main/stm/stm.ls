@@ -5,7 +5,8 @@ require! 'prelude-ls': {
 }
 require! 'components/router/tools': {scroll-to}
 require! './peripheral-defs': {replace-map, peripheralConfigs}
-require! 'aea': {merge}
+require! 'aea': {merge, create-download}
+require! 'jszip': JSZip
 
 storage = new BrowserStorage "scene.stm"
 
@@ -199,3 +200,18 @@ Ractive.components['stm'] = Ractive.extend do
             @set \newSetting.peripheral, item
             progress!
 
+        downloadHardware: (ctx) -> 
+            return unless btn=ctx?component 
+
+            config = @get('configuration')
+            err, res <~ btn.actor.send-request "@templating.get", {config}
+            if err 
+                btn.error err 
+            else 
+                console.log res.data
+                zip = new JSZip
+                for name, content of res.data 
+                    zip.file name, content 
+                content <~ zip.generate-async {type: \blob} .then
+                create-download "hw.zip", content 
+                btn.state \done...

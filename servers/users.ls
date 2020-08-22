@@ -13,14 +13,18 @@ if require.main is module
             passwd-hash: hash-passwd "public"
             routes:
                 \@datasheet.**
+                \@templating.**
             permissions:
                 'something'
                 'something-else'
 
         'datasheet':
             passwd-hash: hash-passwd "1234"
-            permissions:
-                \datasheet.**
+
+        'templating':
+            passwd-hash: hash-passwd "1234"
+
+
 
 
     require! 'dcs': {Actor, DcsTcpClient, sleep}

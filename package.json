@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/ceremcem/chibios-configurator#readme",
   "dependencies": {
+    "jszip": "^3.5.0",
     "xml-js": "^1.6.11"
   }
 }

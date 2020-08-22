@@ -32,14 +32,18 @@
                     .ui.form
                         .field
                             .ui.label.green {{newSetting.pin || selected.unavailable}}
-                        +iff('configuration[selected.mcu][newSetting.pin] \
-                            && ! overrideAllowed')
-                            //- this pin is already configured, confirm to override
-                            .field
-                                btn.orange(on-click="@.set('overrideAllowed', true)") Edit
-                        +else
-                            include ./peripheral-config.pug
-                        +endif
+                            +iff('configuration[selected.mcu][newSetting.pin] \
+                                && ! overrideAllowed')
+                                //- this pin is already configured, confirm to override
+                                .field
+                                    btn.orange(on-click="@.set('overrideAllowed', true)") Edit
+                            +else
+                                include ./peripheral-config.pug
+                            +endif
+
+                        .field
+                            label Download Hardware Definition 
+                            ack-button.green(on-click="downloadHardware") Download
                 .eight.wide.column
                     .ui.form 
                         .field 
