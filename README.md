@@ -5,7 +5,8 @@ Generates ChibiOS configurations.
 # Development 
 
 1. Setup your environment: (see ./scada.js/doc/using-virtual-environment.md)
-2. Install dependencies: `make install-deps`
+2. `./scada.js/venv`
+3. Install dependencies: `make install-deps`
 
 After setup, start development: 
 
