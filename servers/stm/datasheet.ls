@@ -1,5 +1,5 @@
 require! 'dcs': {DcsTcpClient, Actor}
-require! '../config'
+require! '../../config'
 require! 'xml-js': convert
 require! 'fs': {readFileSync, readdirSync}
 require! 'prelude-ls': {map, flatten, unique, find, filter}

@@ -19,7 +19,13 @@
 
 /*
  * MCU type as defined in the ST header.
+ * Generated for {{mcu}}
+ * Pinout is: 
+ {{#each Object.keys(pinout) as pin}}
+ *   - {{pin}}: {{pinout[pin].peripheral.name}}
+ {{/each}}
  */
+
 #define STM32F030x4
 #define STM32F030x6 // see https://github.com/ChibiOS/ChibiOS/pull/31
 
