@@ -1,0 +1,4107 @@
+export supported-mcus = [
+  {
+    "chibiDef": "STM32F030x6",
+    "mcuCode": "STM32F030C6Tx",
+    "stmGlob": "STM32F030C6Tx"
+  },
+  {
+    "chibiDef": "STM32F030x8",
+    "mcuCode": "STM32F030C8Tx",
+    "stmGlob": "STM32F030C8Tx"
+  },
+  {
+    "chibiDef": "STM32F030xC",
+    "mcuCode": "STM32F030CCTx",
+    "stmGlob": "STM32F030CCTx"
+  },
+  {
+    "chibiDef": "STM32F030x4",
+    "mcuCode": "STM32F030F4Px",
+    "stmGlob": "STM32F030F4Px"
+  },
+  {
+    "chibiDef": "STM32F030x6",
+    "mcuCode": "STM32F030K6Tx",
+    "stmGlob": "STM32F030K6Tx"
+  },
+  {
+    "chibiDef": "STM32F030x8",
+    "mcuCode": "STM32F030R8Tx",
+    "stmGlob": "STM32F030R8Tx"
+  },
+  {
+    "chibiDef": "STM32F030xC",
+    "mcuCode": "STM32F030RCTx",
+    "stmGlob": "STM32F030RCTx"
+  },
+  {
+    "chibiDef": "STM32F031x6",
+    "mcuCode": "STM32F031C6Tx",
+    "stmGlob": "STM32F031C(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F031x6",
+    "mcuCode": "STM32F031E6Yx",
+    "stmGlob": "STM32F031E6Yx"
+  },
+  {
+    "chibiDef": "STM32F031x6",
+    "mcuCode": "STM32F031F6Px",
+    "stmGlob": "STM32F031F(4-6)Px"
+  },
+  {
+    "chibiDef": "STM32F031x6",
+    "mcuCode": "STM32F031G6Ux",
+    "stmGlob": "STM32F031G(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32F031x6",
+    "mcuCode": "STM32F031K6Ux",
+    "stmGlob": "STM32F031K(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32F031x6",
+    "mcuCode": "STM32F031K6Tx",
+    "stmGlob": "STM32F031K6Tx"
+  },
+  {
+    "chibiDef": "STM32F038xx",
+    "mcuCode": "STM32F038C6Tx",
+    "stmGlob": "STM32F038C6Tx"
+  },
+  {
+    "chibiDef": "STM32F038xx",
+    "mcuCode": "STM32F038E6Yx",
+    "stmGlob": "STM32F038E6Yx"
+  },
+  {
+    "chibiDef": "STM32F038xx",
+    "mcuCode": "STM32F038F6Px",
+    "stmGlob": "STM32F038F6Px"
+  },
+  {
+    "chibiDef": "STM32F038xx",
+    "mcuCode": "STM32F038G6Ux",
+    "stmGlob": "STM32F038G6Ux"
+  },
+  {
+    "chibiDef": "STM32F038xx",
+    "mcuCode": "STM32F038K6Ux",
+    "stmGlob": "STM32F038K6Ux"
+  },
+  {
+    "chibiDef": "STM32F042x6",
+    "mcuCode": "STM32F042C6Tx",
+    "stmGlob": "STM32F042C(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F042x6",
+    "mcuCode": "STM32F042C6Ux",
+    "stmGlob": "STM32F042C(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32F042x6",
+    "mcuCode": "STM32F042F6Px",
+    "stmGlob": "STM32F042F6Px"
+  },
+  {
+    "chibiDef": "STM32F042x6",
+    "mcuCode": "STM32F042G6Ux",
+    "stmGlob": "STM32F042G(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32F042x6",
+    "mcuCode": "STM32F042K6Tx",
+    "stmGlob": "STM32F042K(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F042x6",
+    "mcuCode": "STM32F042K6Ux",
+    "stmGlob": "STM32F042K(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32F042x6",
+    "mcuCode": "STM32F042T6Yx",
+    "stmGlob": "STM32F042T6Yx"
+  },
+  {
+    "chibiDef": "STM32F048xx",
+    "mcuCode": "STM32F048C6Ux",
+    "stmGlob": "STM32F048C6Ux"
+  },
+  {
+    "chibiDef": "STM32F048xx",
+    "mcuCode": "STM32F048G6Ux",
+    "stmGlob": "STM32F048G6Ux"
+  },
+  {
+    "chibiDef": "STM32F048xx",
+    "mcuCode": "STM32F048T6Yx",
+    "stmGlob": "STM32F048T6Yx"
+  },
+  {
+    "chibiDef": "STM32F051x8",
+    "mcuCode": "STM32F051C8Tx",
+    "stmGlob": "STM32F051C8Tx"
+  },
+  {
+    "chibiDef": "STM32F051x8",
+    "mcuCode": "STM32F051C8Ux",
+    "stmGlob": "STM32F051C8Ux"
+  },
+  {
+    "chibiDef": "STM32F051x8",
+    "mcuCode": "STM32F051K8Tx",
+    "stmGlob": "STM32F051K8Tx"
+  },
+  {
+    "chibiDef": "STM32F051x8",
+    "mcuCode": "STM32F051K8Ux",
+    "stmGlob": "STM32F051K8Ux"
+  },
+  {
+    "chibiDef": "STM32F051x8",
+    "mcuCode": "STM32F051R8Hx",
+    "stmGlob": "STM32F051R8Hx"
+  },
+  {
+    "chibiDef": "STM32F051x8",
+    "mcuCode": "STM32F051R8Tx",
+    "stmGlob": "STM32F051R8Tx"
+  },
+  {
+    "chibiDef": "STM32F051x8",
+    "mcuCode": "STM32F051T8Yx",
+    "stmGlob": "STM32F051T8Yx"
+  },
+  {
+    "chibiDef": "STM32F058xx",
+    "mcuCode": "STM32F058C8Ux",
+    "stmGlob": "STM32F058C8Ux"
+  },
+  {
+    "chibiDef": "STM32F058xx",
+    "mcuCode": "STM32F058R8Hx",
+    "stmGlob": "STM32F058R8Hx"
+  },
+  {
+    "chibiDef": "STM32F058xx",
+    "mcuCode": "STM32F058R8Tx",
+    "stmGlob": "STM32F058R8Tx"
+  },
+  {
+    "chibiDef": "STM32F058xx",
+    "mcuCode": "STM32F058T8Yx",
+    "stmGlob": "STM32F058T8Yx"
+  },
+  {
+    "chibiDef": "STM32F070x6",
+    "mcuCode": "STM32F070C6Tx",
+    "stmGlob": "STM32F070C6Tx"
+  },
+  {
+    "chibiDef": "STM32F070xB",
+    "mcuCode": "STM32F070CBTx",
+    "stmGlob": "STM32F070CBTx"
+  },
+  {
+    "chibiDef": "STM32F070x6",
+    "mcuCode": "STM32F070F6Px",
+    "stmGlob": "STM32F070F6Px"
+  },
+  {
+    "chibiDef": "STM32F070xB",
+    "mcuCode": "STM32F070RBTx",
+    "stmGlob": "STM32F070RBTx"
+  },
+  {
+    "chibiDef": "STM32F071xB",
+    "mcuCode": "STM32F071CBTx",
+    "stmGlob": "STM32F071C(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F071xB",
+    "mcuCode": "STM32F071CBUx",
+    "stmGlob": "STM32F071C(8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32F071xB",
+    "mcuCode": "STM32F071CBYx",
+    "stmGlob": "STM32F071CBYx"
+  },
+  {
+    "chibiDef": "STM32F071xB",
+    "mcuCode": "STM32F071RBTx",
+    "stmGlob": "STM32F071RBTx"
+  },
+  {
+    "chibiDef": "STM32F071xB",
+    "mcuCode": "STM32F071VBHx",
+    "stmGlob": "STM32F071V(8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32F071xB",
+    "mcuCode": "STM32F071VBTx",
+    "stmGlob": "STM32F071V(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F072xB",
+    "mcuCode": "STM32F072CBTx",
+    "stmGlob": "STM32F072C(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F072xB",
+    "mcuCode": "STM32F072CBUx",
+    "stmGlob": "STM32F072C(8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32F072xB",
+    "mcuCode": "STM32F072CBYx",
+    "stmGlob": "STM32F072CBYx"
+  },
+  {
+    "chibiDef": "STM32F072xB",
+    "mcuCode": "STM32F072RBTx",
+    "stmGlob": "STM32F072R(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F072xB",
+    "mcuCode": "STM32F072RBHx",
+    "stmGlob": "STM32F072RBHx"
+  },
+  {
+    "chibiDef": "STM32F072xB",
+    "mcuCode": "STM32F072RBIx",
+    "stmGlob": "STM32F072RBIx"
+  },
+  {
+    "chibiDef": "STM32F072xB",
+    "mcuCode": "STM32F072VBHx",
+    "stmGlob": "STM32F072V(8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32F072xB",
+    "mcuCode": "STM32F072VBTx",
+    "stmGlob": "STM32F072V(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F078xx",
+    "mcuCode": "STM32F078CBTx",
+    "stmGlob": "STM32F078CBTx"
+  },
+  {
+    "chibiDef": "STM32F078xx",
+    "mcuCode": "STM32F078CBUx",
+    "stmGlob": "STM32F078CBUx"
+  },
+  {
+    "chibiDef": "STM32F078xx",
+    "mcuCode": "STM32F078CBYx",
+    "stmGlob": "STM32F078CBYx"
+  },
+  {
+    "chibiDef": "STM32F078xx",
+    "mcuCode": "STM32F078RBHx",
+    "stmGlob": "STM32F078RBHx"
+  },
+  {
+    "chibiDef": "STM32F078xx",
+    "mcuCode": "STM32F078RBTx",
+    "stmGlob": "STM32F078RBTx"
+  },
+  {
+    "chibiDef": "STM32F078xx",
+    "mcuCode": "STM32F078VBHx",
+    "stmGlob": "STM32F078VBHx"
+  },
+  {
+    "chibiDef": "STM32F078xx",
+    "mcuCode": "STM32F078VBTx",
+    "stmGlob": "STM32F078VBTx"
+  },
+  {
+    "chibiDef": "STM32F091xC",
+    "mcuCode": "STM32F091CCTx",
+    "stmGlob": "STM32F091C(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F091xC",
+    "mcuCode": "STM32F091CCUx",
+    "stmGlob": "STM32F091C(B-C)Ux"
+  },
+  {
+    "chibiDef": "STM32F091xC",
+    "mcuCode": "STM32F091RCTx",
+    "stmGlob": "STM32F091R(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F091xC",
+    "mcuCode": "STM32F091RCHx",
+    "stmGlob": "STM32F091RCHx"
+  },
+  {
+    "chibiDef": "STM32F091xC",
+    "mcuCode": "STM32F091RCYx",
+    "stmGlob": "STM32F091RCYx"
+  },
+  {
+    "chibiDef": "STM32F091xC",
+    "mcuCode": "STM32F091VCTx",
+    "stmGlob": "STM32F091V(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F091xC",
+    "mcuCode": "STM32F091VCHx",
+    "stmGlob": "STM32F091VCHx"
+  },
+  {
+    "chibiDef": "STM32F098xx",
+    "mcuCode": "STM32F098CCTx",
+    "stmGlob": "STM32F098CCTx"
+  },
+  {
+    "chibiDef": "STM32F098xx",
+    "mcuCode": "STM32F098CCUx",
+    "stmGlob": "STM32F098CCUx"
+  },
+  {
+    "chibiDef": "STM32F098xx",
+    "mcuCode": "STM32F098RCHx",
+    "stmGlob": "STM32F098RCHx"
+  },
+  {
+    "chibiDef": "STM32F098xx",
+    "mcuCode": "STM32F098RCTx",
+    "stmGlob": "STM32F098RCTx"
+  },
+  {
+    "chibiDef": "STM32F098xx",
+    "mcuCode": "STM32F098RCYx",
+    "stmGlob": "STM32F098RCYx"
+  },
+  {
+    "chibiDef": "STM32F098xx",
+    "mcuCode": "STM32F098VCHx",
+    "stmGlob": "STM32F098VCHx"
+  },
+  {
+    "chibiDef": "STM32F098xx",
+    "mcuCode": "STM32F098VCTx",
+    "stmGlob": "STM32F098VCTx"
+  },
+  {
+    "chibiDef": "STM32F100xB",
+    "mcuCode": "STM32F100CBTx",
+    "stmGlob": "STM32F100C(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F100xB",
+    "mcuCode": "STM32F100RBHx",
+    "stmGlob": "STM32F100R(8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32F100xB",
+    "mcuCode": "STM32F100RBTx",
+    "stmGlob": "STM32F100R(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F100xE",
+    "mcuCode": "STM32F100RETx",
+    "stmGlob": "STM32F100R(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F100xB",
+    "mcuCode": "STM32F100VBTx",
+    "stmGlob": "STM32F100V(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F100xE",
+    "mcuCode": "STM32F100VETx",
+    "stmGlob": "STM32F100V(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F100xE",
+    "mcuCode": "STM32F100ZETx",
+    "stmGlob": "STM32F100Z(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F101x6",
+    "mcuCode": "STM32F101C6Tx",
+    "stmGlob": "STM32F101C(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xB",
+    "mcuCode": "STM32F101CBTx",
+    "stmGlob": "STM32F101C(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xB",
+    "mcuCode": "STM32F101CBUx",
+    "stmGlob": "STM32F101C(8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32F101x6",
+    "mcuCode": "STM32F101R6Tx",
+    "stmGlob": "STM32F101R(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xB",
+    "mcuCode": "STM32F101RBTx",
+    "stmGlob": "STM32F101R(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xB",
+    "mcuCode": "STM32F101RBHx",
+    "stmGlob": "STM32F101RBHx"
+  },
+  {
+    "chibiDef": "STM32F101xE",
+    "mcuCode": "STM32F101RETx",
+    "stmGlob": "STM32F101R(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xG",
+    "mcuCode": "STM32F101RGTx",
+    "stmGlob": "STM32F101R(F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F101x6",
+    "mcuCode": "STM32F101T6Ux",
+    "stmGlob": "STM32F101T(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32F101xB",
+    "mcuCode": "STM32F101TBUx",
+    "stmGlob": "STM32F101T(8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32F101xB",
+    "mcuCode": "STM32F101VBTx",
+    "stmGlob": "STM32F101V(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xE",
+    "mcuCode": "STM32F101VETx",
+    "stmGlob": "STM32F101V(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xG",
+    "mcuCode": "STM32F101VGTx",
+    "stmGlob": "STM32F101V(F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xE",
+    "mcuCode": "STM32F101ZETx",
+    "stmGlob": "STM32F101Z(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F101xG",
+    "mcuCode": "STM32F101ZGTx",
+    "stmGlob": "STM32F101Z(F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F102x6",
+    "mcuCode": "STM32F102C6Tx",
+    "stmGlob": "STM32F102C(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F102xB",
+    "mcuCode": "STM32F102CBTx",
+    "stmGlob": "STM32F102C(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F102x6",
+    "mcuCode": "STM32F102R6Tx",
+    "stmGlob": "STM32F102R(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F102xB",
+    "mcuCode": "STM32F102RBTx",
+    "stmGlob": "STM32F102R(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F103x6",
+    "mcuCode": "STM32F103C6Tx",
+    "stmGlob": "STM32F103C(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F103x6",
+    "mcuCode": "STM32F103C6Ux",
+    "stmGlob": "STM32F103C6Ux"
+  },
+  {
+    "chibiDef": "STM32F103xB",
+    "mcuCode": "STM32F103CBTx",
+    "stmGlob": "STM32F103C(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F103xB",
+    "mcuCode": "STM32F103CBUx",
+    "stmGlob": "STM32F103CBUx"
+  },
+  {
+    "chibiDef": "STM32F103x6",
+    "mcuCode": "STM32F103R6Hx",
+    "stmGlob": "STM32F103R(4-6)Hx"
+  },
+  {
+    "chibiDef": "STM32F103x6",
+    "mcuCode": "STM32F103R6Tx",
+    "stmGlob": "STM32F103R(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32F103xB",
+    "mcuCode": "STM32F103RBHx",
+    "stmGlob": "STM32F103R(8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32F103xB",
+    "mcuCode": "STM32F103RBTx",
+    "stmGlob": "STM32F103R(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F103xE",
+    "mcuCode": "STM32F103RETx",
+    "stmGlob": "STM32F103R(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F103xE",
+    "mcuCode": "STM32F103REYx",
+    "stmGlob": "STM32F103R(C-D-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F103xG",
+    "mcuCode": "STM32F103RGTx",
+    "stmGlob": "STM32F103R(F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F103x6",
+    "mcuCode": "STM32F103T6Ux",
+    "stmGlob": "STM32F103T(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32F103xB",
+    "mcuCode": "STM32F103TBUx",
+    "stmGlob": "STM32F103T(8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32F103xB",
+    "mcuCode": "STM32F103VBHx",
+    "stmGlob": "STM32F103V(8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32F103xB",
+    "mcuCode": "STM32F103VBTx",
+    "stmGlob": "STM32F103V(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F103xB",
+    "mcuCode": "STM32F103VBIx",
+    "stmGlob": "STM32F103VBIx"
+  },
+  {
+    "chibiDef": "STM32F103xE",
+    "mcuCode": "STM32F103VEHx",
+    "stmGlob": "STM32F103V(C-D-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F103xE",
+    "mcuCode": "STM32F103VETx",
+    "stmGlob": "STM32F103V(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F103xG",
+    "mcuCode": "STM32F103VGTx",
+    "stmGlob": "STM32F103V(F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F103xE",
+    "mcuCode": "STM32F103ZEHx",
+    "stmGlob": "STM32F103Z(C-D-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F103xE",
+    "mcuCode": "STM32F103ZETx",
+    "stmGlob": "STM32F103Z(C-D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F103xG",
+    "mcuCode": "STM32F103ZGHx",
+    "stmGlob": "STM32F103Z(F-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F103xG",
+    "mcuCode": "STM32F103ZGTx",
+    "stmGlob": "STM32F103Z(F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F105xC",
+    "mcuCode": "STM32F105RCTx",
+    "stmGlob": "STM32F105R(8-B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F105xC",
+    "mcuCode": "STM32F105VCTx",
+    "stmGlob": "STM32F105V(8-B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F107xC",
+    "mcuCode": "STM32F107RCTx",
+    "stmGlob": "STM32F107R(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F107xC",
+    "mcuCode": "STM32F107VCTx",
+    "stmGlob": "STM32F107V(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F107xC",
+    "mcuCode": "STM32F107VCHx",
+    "stmGlob": "STM32F107VCHx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205RBTx",
+    "stmGlob": "STM32F205R(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205RCTx",
+    "stmGlob": "STM32F205R(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205RETx",
+    "stmGlob": "STM32F205R(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205RFTx",
+    "stmGlob": "STM32F205R(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205RGTx",
+    "stmGlob": "STM32F205R(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205REYx",
+    "stmGlob": "STM32F205R(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205RGYx",
+    "stmGlob": "STM32F205R(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205RGEx",
+    "stmGlob": "STM32F205RGEx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205VBTx",
+    "stmGlob": "STM32F205V(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205VCTx",
+    "stmGlob": "STM32F205V(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205VETx",
+    "stmGlob": "STM32F205V(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205VFTx",
+    "stmGlob": "STM32F205V(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205VGTx",
+    "stmGlob": "STM32F205V(B-C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205ZCTx",
+    "stmGlob": "STM32F205Z(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205ZETx",
+    "stmGlob": "STM32F205Z(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205ZFTx",
+    "stmGlob": "STM32F205Z(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F205xx",
+    "mcuCode": "STM32F205ZGTx",
+    "stmGlob": "STM32F205Z(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207ICHx",
+    "stmGlob": "STM32F207I(C-E-F-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207IEHx",
+    "stmGlob": "STM32F207I(C-E-F-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207IFHx",
+    "stmGlob": "STM32F207I(C-E-F-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207IGHx",
+    "stmGlob": "STM32F207I(C-E-F-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207ICTx",
+    "stmGlob": "STM32F207I(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207IETx",
+    "stmGlob": "STM32F207I(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207IFTx",
+    "stmGlob": "STM32F207I(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207IGTx",
+    "stmGlob": "STM32F207I(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207VCTx",
+    "stmGlob": "STM32F207V(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207VETx",
+    "stmGlob": "STM32F207V(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207VFTx",
+    "stmGlob": "STM32F207V(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207VGTx",
+    "stmGlob": "STM32F207V(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207ZCTx",
+    "stmGlob": "STM32F207Z(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207ZETx",
+    "stmGlob": "STM32F207Z(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207ZFTx",
+    "stmGlob": "STM32F207Z(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F207xx",
+    "mcuCode": "STM32F207ZGTx",
+    "stmGlob": "STM32F207Z(C-E-F-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F215xx",
+    "mcuCode": "STM32F215RETx",
+    "stmGlob": "STM32F215R(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F215xx",
+    "mcuCode": "STM32F215RGTx",
+    "stmGlob": "STM32F215R(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F215xx",
+    "mcuCode": "STM32F215VETx",
+    "stmGlob": "STM32F215V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F215xx",
+    "mcuCode": "STM32F215VGTx",
+    "stmGlob": "STM32F215V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F215xx",
+    "mcuCode": "STM32F215ZETx",
+    "stmGlob": "STM32F215Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F215xx",
+    "mcuCode": "STM32F215ZGTx",
+    "stmGlob": "STM32F215Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F217xx",
+    "mcuCode": "STM32F217IEHx",
+    "stmGlob": "STM32F217I(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F217xx",
+    "mcuCode": "STM32F217IGHx",
+    "stmGlob": "STM32F217I(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F217xx",
+    "mcuCode": "STM32F217IETx",
+    "stmGlob": "STM32F217I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F217xx",
+    "mcuCode": "STM32F217IGTx",
+    "stmGlob": "STM32F217I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F217xx",
+    "mcuCode": "STM32F217VETx",
+    "stmGlob": "STM32F217V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F217xx",
+    "mcuCode": "STM32F217VGTx",
+    "stmGlob": "STM32F217V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F217xx",
+    "mcuCode": "STM32F217ZETx",
+    "stmGlob": "STM32F217Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F217xx",
+    "mcuCode": "STM32F217ZGTx",
+    "stmGlob": "STM32F217Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F301x8",
+    "mcuCode": "STM32F301C8Tx",
+    "stmGlob": "STM32F301C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F301x8",
+    "mcuCode": "STM32F301C8Yx",
+    "stmGlob": "STM32F301C8Yx"
+  },
+  {
+    "chibiDef": "STM32F301x8",
+    "mcuCode": "STM32F301K8Tx",
+    "stmGlob": "STM32F301K(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F301x8",
+    "mcuCode": "STM32F301K8Ux",
+    "stmGlob": "STM32F301K(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32F301x8",
+    "mcuCode": "STM32F301R8Tx",
+    "stmGlob": "STM32F301R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F302x8",
+    "mcuCode": "STM32F302C8Tx",
+    "stmGlob": "STM32F302C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F302x8",
+    "mcuCode": "STM32F302C8Yx",
+    "stmGlob": "STM32F302C8Yx"
+  },
+  {
+    "chibiDef": "STM32F302xC",
+    "mcuCode": "STM32F302CCTx",
+    "stmGlob": "STM32F302C(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F302x8",
+    "mcuCode": "STM32F302K8Ux",
+    "stmGlob": "STM32F302K(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32F302x8",
+    "mcuCode": "STM32F302R8Tx",
+    "stmGlob": "STM32F302R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F302xC",
+    "mcuCode": "STM32F302RCTx",
+    "stmGlob": "STM32F302R(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F302xE",
+    "mcuCode": "STM32F302RETx",
+    "stmGlob": "STM32F302R(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F302xC",
+    "mcuCode": "STM32F302VCTx",
+    "stmGlob": "STM32F302V(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F302xC",
+    "mcuCode": "STM32F302VCYx",
+    "stmGlob": "STM32F302VCYx"
+  },
+  {
+    "chibiDef": "STM32F302xE",
+    "mcuCode": "STM32F302VEHx",
+    "stmGlob": "STM32F302V(D-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F302xE",
+    "mcuCode": "STM32F302VETx",
+    "stmGlob": "STM32F302V(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F302xE",
+    "mcuCode": "STM32F302ZETx",
+    "stmGlob": "STM32F302Z(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F303x8",
+    "mcuCode": "STM32F303C8Tx",
+    "stmGlob": "STM32F303C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F303x8",
+    "mcuCode": "STM32F303C8Yx",
+    "stmGlob": "STM32F303C8Yx"
+  },
+  {
+    "chibiDef": "STM32F303xC",
+    "mcuCode": "STM32F303CCTx",
+    "stmGlob": "STM32F303C(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F303x8",
+    "mcuCode": "STM32F303K8Tx",
+    "stmGlob": "STM32F303K(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F303x8",
+    "mcuCode": "STM32F303K8Ux",
+    "stmGlob": "STM32F303K(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32F303x8",
+    "mcuCode": "STM32F303R8Tx",
+    "stmGlob": "STM32F303R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F303xC",
+    "mcuCode": "STM32F303RCTx",
+    "stmGlob": "STM32F303R(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F303xE",
+    "mcuCode": "STM32F303RETx",
+    "stmGlob": "STM32F303R(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F303xC",
+    "mcuCode": "STM32F303VCTx",
+    "stmGlob": "STM32F303V(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F303xC",
+    "mcuCode": "STM32F303VCYx",
+    "stmGlob": "STM32F303VCYx"
+  },
+  {
+    "chibiDef": "STM32F303xE",
+    "mcuCode": "STM32F303VEHx",
+    "stmGlob": "STM32F303V(D-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F303xE",
+    "mcuCode": "STM32F303VETx",
+    "stmGlob": "STM32F303V(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F303xE",
+    "mcuCode": "STM32F303VEYx",
+    "stmGlob": "STM32F303VEYx"
+  },
+  {
+    "chibiDef": "STM32F303xE",
+    "mcuCode": "STM32F303ZETx",
+    "stmGlob": "STM32F303Z(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F318x8",
+    "mcuCode": "STM32F318C8Tx",
+    "stmGlob": "STM32F318C8Tx"
+  },
+  {
+    "chibiDef": "STM32F318x8",
+    "mcuCode": "STM32F318C8Yx",
+    "stmGlob": "STM32F318C8Yx"
+  },
+  {
+    "chibiDef": "STM32F318x8",
+    "mcuCode": "STM32F318K8Ux",
+    "stmGlob": "STM32F318K8Ux"
+  },
+  {
+    "chibiDef": "STM32F328x8",
+    "mcuCode": "STM32F328C8Tx",
+    "stmGlob": "STM32F328C8Tx"
+  },
+  {
+    "chibiDef": "STM32F334x8",
+    "mcuCode": "STM32F334C8Tx",
+    "stmGlob": "STM32F334C(4-6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F334x8",
+    "mcuCode": "STM32F334C8Yx",
+    "stmGlob": "STM32F334C8Yx"
+  },
+  {
+    "chibiDef": "STM32F334x8",
+    "mcuCode": "STM32F334K8Tx",
+    "stmGlob": "STM32F334K(4-6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F334x8",
+    "mcuCode": "STM32F334K8Ux",
+    "stmGlob": "STM32F334K(4-6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32F334x8",
+    "mcuCode": "STM32F334R8Tx",
+    "stmGlob": "STM32F334R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32F358xC",
+    "mcuCode": "STM32F358CCTx",
+    "stmGlob": "STM32F358CCTx"
+  },
+  {
+    "chibiDef": "STM32F358xC",
+    "mcuCode": "STM32F358RCTx",
+    "stmGlob": "STM32F358RCTx"
+  },
+  {
+    "chibiDef": "STM32F358xC",
+    "mcuCode": "STM32F358VCTx",
+    "stmGlob": "STM32F358VCTx"
+  },
+  {
+    "chibiDef": "STM32F373xC",
+    "mcuCode": "STM32F373CCTx",
+    "stmGlob": "STM32F373C(8-B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F373xC",
+    "mcuCode": "STM32F373RCTx",
+    "stmGlob": "STM32F373R(8-B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F373xC",
+    "mcuCode": "STM32F373VCHx",
+    "stmGlob": "STM32F373V(8-B-C)Hx"
+  },
+  {
+    "chibiDef": "STM32F373xC",
+    "mcuCode": "STM32F373VCTx",
+    "stmGlob": "STM32F373V(8-B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F378xx",
+    "mcuCode": "STM32F378CCTx",
+    "stmGlob": "STM32F378CCTx"
+  },
+  {
+    "chibiDef": "STM32F378xx",
+    "mcuCode": "STM32F378RCTx",
+    "stmGlob": "STM32F378RCTx"
+  },
+  {
+    "chibiDef": "STM32F378xx",
+    "mcuCode": "STM32F378RCYx",
+    "stmGlob": "STM32F378RCYx"
+  },
+  {
+    "chibiDef": "STM32F378xx",
+    "mcuCode": "STM32F378VCHx",
+    "stmGlob": "STM32F378VCHx"
+  },
+  {
+    "chibiDef": "STM32F378xx",
+    "mcuCode": "STM32F378VCTx",
+    "stmGlob": "STM32F378VCTx"
+  },
+  {
+    "chibiDef": "STM32F398xx",
+    "mcuCode": "STM32F398VETx",
+    "stmGlob": "STM32F398VETx"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401CBUx",
+    "stmGlob": "STM32F401C(B-C)Ux"
+  },
+  {
+    "chibiDef": "STM32F401xC",
+    "mcuCode": "STM32F401CCUx",
+    "stmGlob": "STM32F401C(B-C)Ux"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401CBYx",
+    "stmGlob": "STM32F401C(B-C)Yx"
+  },
+  {
+    "chibiDef": "STM32F401xC",
+    "mcuCode": "STM32F401CCYx",
+    "stmGlob": "STM32F401C(B-C)Yx"
+  },
+  {
+    "chibiDef": "STM32F401xC",
+    "mcuCode": "STM32F401CCFx",
+    "stmGlob": "STM32F401CCFx"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401CDUx",
+    "stmGlob": "STM32F401C(D-E)Ux"
+  },
+  {
+    "chibiDef": "STM32F401xE",
+    "mcuCode": "STM32F401CEUx",
+    "stmGlob": "STM32F401C(D-E)Ux"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401CDYx",
+    "stmGlob": "STM32F401C(D-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F401xE",
+    "mcuCode": "STM32F401CEYx",
+    "stmGlob": "STM32F401C(D-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401RBTx",
+    "stmGlob": "STM32F401R(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F401xC",
+    "mcuCode": "STM32F401RCTx",
+    "stmGlob": "STM32F401R(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401RDTx",
+    "stmGlob": "STM32F401R(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F401xE",
+    "mcuCode": "STM32F401RETx",
+    "stmGlob": "STM32F401R(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401VBHx",
+    "stmGlob": "STM32F401V(B-C)Hx"
+  },
+  {
+    "chibiDef": "STM32F401xC",
+    "mcuCode": "STM32F401VCHx",
+    "stmGlob": "STM32F401V(B-C)Hx"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401VBTx",
+    "stmGlob": "STM32F401V(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F401xC",
+    "mcuCode": "STM32F401VCTx",
+    "stmGlob": "STM32F401V(B-C)Tx"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401VDHx",
+    "stmGlob": "STM32F401V(D-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F401xE",
+    "mcuCode": "STM32F401VEHx",
+    "stmGlob": "STM32F401V(D-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F401xx",
+    "mcuCode": "STM32F401VDTx",
+    "stmGlob": "STM32F401V(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F401xE",
+    "mcuCode": "STM32F401VETx",
+    "stmGlob": "STM32F401V(D-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F405xx",
+    "mcuCode": "STM32F405OEYx",
+    "stmGlob": "STM32F405O(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32F405xx",
+    "mcuCode": "STM32F405OGYx",
+    "stmGlob": "STM32F405O(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32F405xx",
+    "mcuCode": "STM32F405RGTx",
+    "stmGlob": "STM32F405RGTx"
+  },
+  {
+    "chibiDef": "STM32F405xx",
+    "mcuCode": "STM32F405VGTx",
+    "stmGlob": "STM32F405VGTx"
+  },
+  {
+    "chibiDef": "STM32F405xx",
+    "mcuCode": "STM32F405ZGTx",
+    "stmGlob": "STM32F405ZGTx"
+  },
+  {
+    "chibiDef": "STM32F407xx",
+    "mcuCode": "STM32F407IEHx",
+    "stmGlob": "STM32F407I(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F407xx",
+    "mcuCode": "STM32F407IGHx",
+    "stmGlob": "STM32F407I(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F407xx",
+    "mcuCode": "STM32F407IETx",
+    "stmGlob": "STM32F407I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F407xx",
+    "mcuCode": "STM32F407IGTx",
+    "stmGlob": "STM32F407I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F407xx",
+    "mcuCode": "STM32F407VETx",
+    "stmGlob": "STM32F407V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F407xx",
+    "mcuCode": "STM32F407VGTx",
+    "stmGlob": "STM32F407V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F407xx",
+    "mcuCode": "STM32F407ZETx",
+    "stmGlob": "STM32F407Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F407xx",
+    "mcuCode": "STM32F407ZGTx",
+    "stmGlob": "STM32F407Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F410Cx",
+    "mcuCode": "STM32F410C8Tx",
+    "stmGlob": "STM32F410C(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F410Cx",
+    "mcuCode": "STM32F410CBTx",
+    "stmGlob": "STM32F410C(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F410Cx",
+    "mcuCode": "STM32F410C8Ux",
+    "stmGlob": "STM32F410C(8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32F410Cx",
+    "mcuCode": "STM32F410CBUx",
+    "stmGlob": "STM32F410C(8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32F410Rx",
+    "mcuCode": "STM32F410R8Ix",
+    "stmGlob": "STM32F410R(8-B)Ix"
+  },
+  {
+    "chibiDef": "STM32F410Rx",
+    "mcuCode": "STM32F410RBIx",
+    "stmGlob": "STM32F410R(8-B)Ix"
+  },
+  {
+    "chibiDef": "STM32F410Rx",
+    "mcuCode": "STM32F410R8Tx",
+    "stmGlob": "STM32F410R(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F410Rx",
+    "mcuCode": "STM32F410RBTx",
+    "stmGlob": "STM32F410R(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32F410Tx",
+    "mcuCode": "STM32F410T8Yx",
+    "stmGlob": "STM32F410T(8-B)Yx"
+  },
+  {
+    "chibiDef": "STM32F410Tx",
+    "mcuCode": "STM32F410TBYx",
+    "stmGlob": "STM32F410T(8-B)Yx"
+  },
+  {
+    "chibiDef": "STM32F411xx",
+    "mcuCode": "STM32F411CCUx",
+    "stmGlob": "STM32F411C(C-E)Ux"
+  },
+  {
+    "chibiDef": "STM32F411xE",
+    "mcuCode": "STM32F411CEUx",
+    "stmGlob": "STM32F411C(C-E)Ux"
+  },
+  {
+    "chibiDef": "STM32F411xx",
+    "mcuCode": "STM32F411CCYx",
+    "stmGlob": "STM32F411C(C-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F411xE",
+    "mcuCode": "STM32F411CEYx",
+    "stmGlob": "STM32F411C(C-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F411xx",
+    "mcuCode": "STM32F411RCTx",
+    "stmGlob": "STM32F411R(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F411xE",
+    "mcuCode": "STM32F411RETx",
+    "stmGlob": "STM32F411R(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F411xx",
+    "mcuCode": "STM32F411VCHx",
+    "stmGlob": "STM32F411V(C-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F411xE",
+    "mcuCode": "STM32F411VEHx",
+    "stmGlob": "STM32F411V(C-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F411xx",
+    "mcuCode": "STM32F411VCTx",
+    "stmGlob": "STM32F411V(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F411xE",
+    "mcuCode": "STM32F411VETx",
+    "stmGlob": "STM32F411V(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F412Cx",
+    "mcuCode": "STM32F412CEUx",
+    "stmGlob": "STM32F412C(E-G)Ux"
+  },
+  {
+    "chibiDef": "STM32F412Cx",
+    "mcuCode": "STM32F412CGUx",
+    "stmGlob": "STM32F412C(E-G)Ux"
+  },
+  {
+    "chibiDef": "STM32F412Rx",
+    "mcuCode": "STM32F412RETx",
+    "stmGlob": "STM32F412R(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F412Rx",
+    "mcuCode": "STM32F412RGTx",
+    "stmGlob": "STM32F412R(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F412Rx",
+    "mcuCode": "STM32F412REYxP",
+    "stmGlob": "STM32F412R(E-G)YxP"
+  },
+  {
+    "chibiDef": "STM32F412Rx",
+    "mcuCode": "STM32F412RGYxP",
+    "stmGlob": "STM32F412R(E-G)YxP"
+  },
+  {
+    "chibiDef": "STM32F412Rx",
+    "mcuCode": "STM32F412REYx",
+    "stmGlob": "STM32F412R(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32F412Rx",
+    "mcuCode": "STM32F412RGYx",
+    "stmGlob": "STM32F412R(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32F412Vx",
+    "mcuCode": "STM32F412VEHx",
+    "stmGlob": "STM32F412V(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F412Vx",
+    "mcuCode": "STM32F412VGHx",
+    "stmGlob": "STM32F412V(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F412Vx",
+    "mcuCode": "STM32F412VETx",
+    "stmGlob": "STM32F412V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F412Vx",
+    "mcuCode": "STM32F412VGTx",
+    "stmGlob": "STM32F412V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F412Zx",
+    "mcuCode": "STM32F412ZEJx",
+    "stmGlob": "STM32F412Z(E-G)Jx"
+  },
+  {
+    "chibiDef": "STM32F412Zx",
+    "mcuCode": "STM32F412ZGJx",
+    "stmGlob": "STM32F412Z(E-G)Jx"
+  },
+  {
+    "chibiDef": "STM32F412Zx",
+    "mcuCode": "STM32F412ZETx",
+    "stmGlob": "STM32F412Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F412Zx",
+    "mcuCode": "STM32F412ZGTx",
+    "stmGlob": "STM32F412Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413CGUx",
+    "stmGlob": "STM32F413C(G-H)Ux"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413CHUx",
+    "stmGlob": "STM32F413C(G-H)Ux"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413MGYx",
+    "stmGlob": "STM32F413M(G-H)Yx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413MHYx",
+    "stmGlob": "STM32F413M(G-H)Yx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413RGTx",
+    "stmGlob": "STM32F413R(G-H)Tx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413RHTx",
+    "stmGlob": "STM32F413R(G-H)Tx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413VGHx",
+    "stmGlob": "STM32F413V(G-H)Hx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413VHHx",
+    "stmGlob": "STM32F413V(G-H)Hx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413VGTx",
+    "stmGlob": "STM32F413V(G-H)Tx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413VHTx",
+    "stmGlob": "STM32F413V(G-H)Tx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413ZGJx",
+    "stmGlob": "STM32F413Z(G-H)Jx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413ZHJx",
+    "stmGlob": "STM32F413Z(G-H)Jx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413ZGTx",
+    "stmGlob": "STM32F413Z(G-H)Tx"
+  },
+  {
+    "chibiDef": "STM32F40_41xxx",
+    "mcuCode": "STM32F413ZHTx",
+    "stmGlob": "STM32F413Z(G-H)Tx"
+  },
+  {
+    "chibiDef": "STM32F415xx",
+    "mcuCode": "STM32F415OGYx",
+    "stmGlob": "STM32F415OGYx"
+  },
+  {
+    "chibiDef": "STM32F415xx",
+    "mcuCode": "STM32F415RGTx",
+    "stmGlob": "STM32F415RGTx"
+  },
+  {
+    "chibiDef": "STM32F415xx",
+    "mcuCode": "STM32F415VGTx",
+    "stmGlob": "STM32F415VGTx"
+  },
+  {
+    "chibiDef": "STM32F415xx",
+    "mcuCode": "STM32F415ZGTx",
+    "stmGlob": "STM32F415ZGTx"
+  },
+  {
+    "chibiDef": "STM32F417xx",
+    "mcuCode": "STM32F417IEHx",
+    "stmGlob": "STM32F417I(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F417xx",
+    "mcuCode": "STM32F417IGHx",
+    "stmGlob": "STM32F417I(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F417xx",
+    "mcuCode": "STM32F417IETx",
+    "stmGlob": "STM32F417I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F417xx",
+    "mcuCode": "STM32F417IGTx",
+    "stmGlob": "STM32F417I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F417xx",
+    "mcuCode": "STM32F417VETx",
+    "stmGlob": "STM32F417V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F417xx",
+    "mcuCode": "STM32F417VGTx",
+    "stmGlob": "STM32F417V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F417xx",
+    "mcuCode": "STM32F417ZETx",
+    "stmGlob": "STM32F417Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F417xx",
+    "mcuCode": "STM32F417ZGTx",
+    "stmGlob": "STM32F417Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427AGHx",
+    "stmGlob": "STM32F427A(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427AIHx",
+    "stmGlob": "STM32F427A(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427IGHx",
+    "stmGlob": "STM32F427I(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427IIHx",
+    "stmGlob": "STM32F427I(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427IGTx",
+    "stmGlob": "STM32F427I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427IITx",
+    "stmGlob": "STM32F427I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427VGTx",
+    "stmGlob": "STM32F427V(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427VITx",
+    "stmGlob": "STM32F427V(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427ZGTx",
+    "stmGlob": "STM32F427Z(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F427xx",
+    "mcuCode": "STM32F427ZITx",
+    "stmGlob": "STM32F427Z(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429AGHx",
+    "stmGlob": "STM32F429A(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429AIHx",
+    "stmGlob": "STM32F429A(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429BETx",
+    "stmGlob": "STM32F429B(E-G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429BGTx",
+    "stmGlob": "STM32F429B(E-G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429BITx",
+    "stmGlob": "STM32F429B(E-G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429IEHx",
+    "stmGlob": "STM32F429I(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429IGHx",
+    "stmGlob": "STM32F429I(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429IIHx",
+    "stmGlob": "STM32F429I(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429IETx",
+    "stmGlob": "STM32F429I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429IGTx",
+    "stmGlob": "STM32F429I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429IITx",
+    "stmGlob": "STM32F429IITx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429NEHx",
+    "stmGlob": "STM32F429N(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429NGHx",
+    "stmGlob": "STM32F429N(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429NIHx",
+    "stmGlob": "STM32F429NIHx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429VETx",
+    "stmGlob": "STM32F429V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429VGTx",
+    "stmGlob": "STM32F429V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429VITx",
+    "stmGlob": "STM32F429VITx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429ZETx",
+    "stmGlob": "STM32F429Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429ZGTx",
+    "stmGlob": "STM32F429Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429ZGYx",
+    "stmGlob": "STM32F429ZGYx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429ZITx",
+    "stmGlob": "STM32F429ZITx"
+  },
+  {
+    "chibiDef": "STM32F429xx",
+    "mcuCode": "STM32F429ZIYx",
+    "stmGlob": "STM32F429ZIYx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437AIHx",
+    "stmGlob": "STM32F437AIHx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437IGHx",
+    "stmGlob": "STM32F437I(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437IIHx",
+    "stmGlob": "STM32F437I(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437IGTx",
+    "stmGlob": "STM32F437I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437IITx",
+    "stmGlob": "STM32F437I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437VGTx",
+    "stmGlob": "STM32F437V(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437VITx",
+    "stmGlob": "STM32F437V(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437ZGTx",
+    "stmGlob": "STM32F437Z(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F437xx",
+    "mcuCode": "STM32F437ZITx",
+    "stmGlob": "STM32F437Z(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439AIHx",
+    "stmGlob": "STM32F439AIHx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439BGTx",
+    "stmGlob": "STM32F439B(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439BITx",
+    "stmGlob": "STM32F439B(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439IGHx",
+    "stmGlob": "STM32F439I(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439IIHx",
+    "stmGlob": "STM32F439I(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439IGTx",
+    "stmGlob": "STM32F439I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439IITx",
+    "stmGlob": "STM32F439I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439NGHx",
+    "stmGlob": "STM32F439N(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439NIHx",
+    "stmGlob": "STM32F439N(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439VGTx",
+    "stmGlob": "STM32F439V(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439VITx",
+    "stmGlob": "STM32F439V(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439ZGTx",
+    "stmGlob": "STM32F439Z(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439ZITx",
+    "stmGlob": "STM32F439Z(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439ZGYx",
+    "stmGlob": "STM32F439Z(G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F439xx",
+    "mcuCode": "STM32F439ZIYx",
+    "stmGlob": "STM32F439Z(G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446MCYx",
+    "stmGlob": "STM32F446M(C-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446MEYx",
+    "stmGlob": "STM32F446M(C-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446RCTx",
+    "stmGlob": "STM32F446R(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446RETx",
+    "stmGlob": "STM32F446R(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446VCTx",
+    "stmGlob": "STM32F446V(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446VETx",
+    "stmGlob": "STM32F446V(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446ZCHx",
+    "stmGlob": "STM32F446Z(C-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446ZEHx",
+    "stmGlob": "STM32F446Z(C-E)Hx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446ZCJx",
+    "stmGlob": "STM32F446Z(C-E)Jx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446ZEJx",
+    "stmGlob": "STM32F446Z(C-E)Jx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446ZCTx",
+    "stmGlob": "STM32F446Z(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F446xx",
+    "mcuCode": "STM32F446ZETx",
+    "stmGlob": "STM32F446Z(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469AEHx",
+    "stmGlob": "STM32F469A(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469AGHx",
+    "stmGlob": "STM32F469A(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469AIHx",
+    "stmGlob": "STM32F469A(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469AEYx",
+    "stmGlob": "STM32F469A(E-G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469AGYx",
+    "stmGlob": "STM32F469A(E-G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469AIYx",
+    "stmGlob": "STM32F469A(E-G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469BETx",
+    "stmGlob": "STM32F469B(E-G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469BGTx",
+    "stmGlob": "STM32F469B(E-G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469BITx",
+    "stmGlob": "STM32F469B(E-G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469IEHx",
+    "stmGlob": "STM32F469I(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469IGHx",
+    "stmGlob": "STM32F469I(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469IIHx",
+    "stmGlob": "STM32F469I(E-G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469IETx",
+    "stmGlob": "STM32F469I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469IGTx",
+    "stmGlob": "STM32F469I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469IITx",
+    "stmGlob": "STM32F469IITx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469NEHx",
+    "stmGlob": "STM32F469N(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469NGHx",
+    "stmGlob": "STM32F469N(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469NIHx",
+    "stmGlob": "STM32F469NIHx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469VETx",
+    "stmGlob": "STM32F469V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469VGTx",
+    "stmGlob": "STM32F469V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469VITx",
+    "stmGlob": "STM32F469VITx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469ZETx",
+    "stmGlob": "STM32F469Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469ZGTx",
+    "stmGlob": "STM32F469Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F469xx",
+    "mcuCode": "STM32F469ZITx",
+    "stmGlob": "STM32F469ZITx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479AGHx",
+    "stmGlob": "STM32F479A(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479AIHx",
+    "stmGlob": "STM32F479A(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479AGYx",
+    "stmGlob": "STM32F479A(G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479AIYx",
+    "stmGlob": "STM32F479A(G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479BGTx",
+    "stmGlob": "STM32F479B(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479BITx",
+    "stmGlob": "STM32F479B(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479IGHx",
+    "stmGlob": "STM32F479I(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479IIHx",
+    "stmGlob": "STM32F479I(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479IGTx",
+    "stmGlob": "STM32F479I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479IITx",
+    "stmGlob": "STM32F479I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479NGHx",
+    "stmGlob": "STM32F479N(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479NIHx",
+    "stmGlob": "STM32F479N(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479VGTx",
+    "stmGlob": "STM32F479V(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479VITx",
+    "stmGlob": "STM32F479V(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479ZGTx",
+    "stmGlob": "STM32F479Z(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F479xx",
+    "mcuCode": "STM32F479ZITx",
+    "stmGlob": "STM32F479Z(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722ICKx",
+    "stmGlob": "STM32F722I(C-E)Kx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722IEKx",
+    "stmGlob": "STM32F722I(C-E)Kx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722ICTx",
+    "stmGlob": "STM32F722I(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722IETx",
+    "stmGlob": "STM32F722I(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722RCTx",
+    "stmGlob": "STM32F722R(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722RETx",
+    "stmGlob": "STM32F722R(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722VCTx",
+    "stmGlob": "STM32F722V(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722VETx",
+    "stmGlob": "STM32F722V(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722ZCTx",
+    "stmGlob": "STM32F722Z(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F722xx",
+    "mcuCode": "STM32F722ZETx",
+    "stmGlob": "STM32F722Z(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723ICKx",
+    "stmGlob": "STM32F723I(C-E)Kx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723IEKx",
+    "stmGlob": "STM32F723I(C-E)Kx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723ICTx",
+    "stmGlob": "STM32F723I(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723IETx",
+    "stmGlob": "STM32F723I(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723VCTx",
+    "stmGlob": "STM32F723V(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723VETx",
+    "stmGlob": "STM32F723V(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723VCYx",
+    "stmGlob": "STM32F723V(C-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723VEYx",
+    "stmGlob": "STM32F723V(C-E)Yx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723ZCIx",
+    "stmGlob": "STM32F723Z(C-E)Ix"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723ZEIx",
+    "stmGlob": "STM32F723Z(C-E)Ix"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723ZCTx",
+    "stmGlob": "STM32F723Z(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F723xx",
+    "mcuCode": "STM32F723ZETx",
+    "stmGlob": "STM32F723Z(C-E)Tx"
+  },
+  {
+    "chibiDef": "STM32F732xx",
+    "mcuCode": "STM32F732IEKx",
+    "stmGlob": "STM32F732IEKx"
+  },
+  {
+    "chibiDef": "STM32F732xx",
+    "mcuCode": "STM32F732IETx",
+    "stmGlob": "STM32F732IETx"
+  },
+  {
+    "chibiDef": "STM32F732xx",
+    "mcuCode": "STM32F732RETx",
+    "stmGlob": "STM32F732RETx"
+  },
+  {
+    "chibiDef": "STM32F732xx",
+    "mcuCode": "STM32F732VETx",
+    "stmGlob": "STM32F732VETx"
+  },
+  {
+    "chibiDef": "STM32F732xx",
+    "mcuCode": "STM32F732ZETx",
+    "stmGlob": "STM32F732ZETx"
+  },
+  {
+    "chibiDef": "STM32F733xx",
+    "mcuCode": "STM32F733IEKx",
+    "stmGlob": "STM32F733IEKx"
+  },
+  {
+    "chibiDef": "STM32F733xx",
+    "mcuCode": "STM32F733IETx",
+    "stmGlob": "STM32F733IETx"
+  },
+  {
+    "chibiDef": "STM32F733xx",
+    "mcuCode": "STM32F733VETx",
+    "stmGlob": "STM32F733VETx"
+  },
+  {
+    "chibiDef": "STM32F733xx",
+    "mcuCode": "STM32F733VEYx",
+    "stmGlob": "STM32F733VEYx"
+  },
+  {
+    "chibiDef": "STM32F733xx",
+    "mcuCode": "STM32F733ZEIx",
+    "stmGlob": "STM32F733ZEIx"
+  },
+  {
+    "chibiDef": "STM32F733xx",
+    "mcuCode": "STM32F733ZETx",
+    "stmGlob": "STM32F733ZETx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745IEKx",
+    "stmGlob": "STM32F745I(E-G)Kx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745IGKx",
+    "stmGlob": "STM32F745I(E-G)Kx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745IETx",
+    "stmGlob": "STM32F745I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745IGTx",
+    "stmGlob": "STM32F745I(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745VEHx",
+    "stmGlob": "STM32F745V(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745VGHx",
+    "stmGlob": "STM32F745V(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745VETx",
+    "stmGlob": "STM32F745V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745VGTx",
+    "stmGlob": "STM32F745V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745ZETx",
+    "stmGlob": "STM32F745Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F745xx",
+    "mcuCode": "STM32F745ZGTx",
+    "stmGlob": "STM32F745Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746BETx",
+    "stmGlob": "STM32F746B(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746BGTx",
+    "stmGlob": "STM32F746B(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746IEKx",
+    "stmGlob": "STM32F746I(E-G)Kx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746IGKx",
+    "stmGlob": "STM32F746I(E-G)Kx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746IETx",
+    "stmGlob": "STM32F746IETx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746IGTx",
+    "stmGlob": "STM32F746IGTx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746NEHx",
+    "stmGlob": "STM32F746NEHx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746NGHx",
+    "stmGlob": "STM32F746NGHx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746VEHx",
+    "stmGlob": "STM32F746V(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746VGHx",
+    "stmGlob": "STM32F746V(E-G)Hx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746VETx",
+    "stmGlob": "STM32F746VETx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746VGTx",
+    "stmGlob": "STM32F746VGTx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746ZEYx",
+    "stmGlob": "STM32F746Z(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746ZGYx",
+    "stmGlob": "STM32F746Z(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746ZETx",
+    "stmGlob": "STM32F746ZETx"
+  },
+  {
+    "chibiDef": "STM32F746xx",
+    "mcuCode": "STM32F746ZGTx",
+    "stmGlob": "STM32F746ZGTx"
+  },
+  {
+    "chibiDef": "STM32F756xx",
+    "mcuCode": "STM32F756BGTx",
+    "stmGlob": "STM32F756BGTx"
+  },
+  {
+    "chibiDef": "STM32F756xx",
+    "mcuCode": "STM32F756IGKx",
+    "stmGlob": "STM32F756IGKx"
+  },
+  {
+    "chibiDef": "STM32F756xx",
+    "mcuCode": "STM32F756IGTx",
+    "stmGlob": "STM32F756IGTx"
+  },
+  {
+    "chibiDef": "STM32F756xx",
+    "mcuCode": "STM32F756NGHx",
+    "stmGlob": "STM32F756NGHx"
+  },
+  {
+    "chibiDef": "STM32F756xx",
+    "mcuCode": "STM32F756VGHx",
+    "stmGlob": "STM32F756VGHx"
+  },
+  {
+    "chibiDef": "STM32F756xx",
+    "mcuCode": "STM32F756VGTx",
+    "stmGlob": "STM32F756VGTx"
+  },
+  {
+    "chibiDef": "STM32F756xx",
+    "mcuCode": "STM32F756ZGTx",
+    "stmGlob": "STM32F756ZGTx"
+  },
+  {
+    "chibiDef": "STM32F756xx",
+    "mcuCode": "STM32F756ZGYx",
+    "stmGlob": "STM32F756ZGYx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767BGTx",
+    "stmGlob": "STM32F767B(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767BITx",
+    "stmGlob": "STM32F767B(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767IGKx",
+    "stmGlob": "STM32F767I(G-I)Kx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767IIKx",
+    "stmGlob": "STM32F767I(G-I)Kx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767IGTx",
+    "stmGlob": "STM32F767I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767IITx",
+    "stmGlob": "STM32F767I(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767NGHx",
+    "stmGlob": "STM32F767N(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767NIHx",
+    "stmGlob": "STM32F767N(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767VGHx",
+    "stmGlob": "STM32F767VGHx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767VGTx",
+    "stmGlob": "STM32F767VGTx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767VIHx",
+    "stmGlob": "STM32F767VIHx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767VITx",
+    "stmGlob": "STM32F767VITx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767ZGTx",
+    "stmGlob": "STM32F767ZGTx"
+  },
+  {
+    "chibiDef": "STM32F767xx",
+    "mcuCode": "STM32F767ZITx",
+    "stmGlob": "STM32F767ZITx"
+  },
+  {
+    "chibiDef": "STM32F769xx",
+    "mcuCode": "STM32F769AGYx",
+    "stmGlob": "STM32F769A(G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F769xx",
+    "mcuCode": "STM32F769AIYx",
+    "stmGlob": "STM32F769A(G-I)Yx"
+  },
+  {
+    "chibiDef": "STM32F769xx",
+    "mcuCode": "STM32F769BGTx",
+    "stmGlob": "STM32F769B(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F769xx",
+    "mcuCode": "STM32F769BITx",
+    "stmGlob": "STM32F769B(G-I)Tx"
+  },
+  {
+    "chibiDef": "STM32F769xx",
+    "mcuCode": "STM32F769IGTx",
+    "stmGlob": "STM32F769IGTx"
+  },
+  {
+    "chibiDef": "STM32F769xx",
+    "mcuCode": "STM32F769IITx",
+    "stmGlob": "STM32F769IITx"
+  },
+  {
+    "chibiDef": "STM32F769xx",
+    "mcuCode": "STM32F769NGHx",
+    "stmGlob": "STM32F769NGHx"
+  },
+  {
+    "chibiDef": "STM32F769xx",
+    "mcuCode": "STM32F769NIHx",
+    "stmGlob": "STM32F769NIHx"
+  },
+  {
+    "chibiDef": "STM32F777xx",
+    "mcuCode": "STM32F777BITx",
+    "stmGlob": "STM32F777BITx"
+  },
+  {
+    "chibiDef": "STM32F777xx",
+    "mcuCode": "STM32F777IIKx",
+    "stmGlob": "STM32F777IIKx"
+  },
+  {
+    "chibiDef": "STM32F777xx",
+    "mcuCode": "STM32F777IITx",
+    "stmGlob": "STM32F777IITx"
+  },
+  {
+    "chibiDef": "STM32F777xx",
+    "mcuCode": "STM32F777NIHx",
+    "stmGlob": "STM32F777NIHx"
+  },
+  {
+    "chibiDef": "STM32F777xx",
+    "mcuCode": "STM32F777VIHx",
+    "stmGlob": "STM32F777VIHx"
+  },
+  {
+    "chibiDef": "STM32F777xx",
+    "mcuCode": "STM32F777VITx",
+    "stmGlob": "STM32F777VITx"
+  },
+  {
+    "chibiDef": "STM32F777xx",
+    "mcuCode": "STM32F777ZITx",
+    "stmGlob": "STM32F777ZITx"
+  },
+  {
+    "chibiDef": "STM32F779xx",
+    "mcuCode": "STM32F779AIYx",
+    "stmGlob": "STM32F779AIYx"
+  },
+  {
+    "chibiDef": "STM32F779xx",
+    "mcuCode": "STM32F779BITx",
+    "stmGlob": "STM32F779BITx"
+  },
+  {
+    "chibiDef": "STM32F779xx",
+    "mcuCode": "STM32F779IITx",
+    "stmGlob": "STM32F779IITx"
+  },
+  {
+    "chibiDef": "STM32F779xx",
+    "mcuCode": "STM32F779NIHx",
+    "stmGlob": "STM32F779NIHx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743AGIx",
+    "stmGlob": "STM32H743A(G-I)Ix"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743AIIx",
+    "stmGlob": "STM32H743A(G-I)Ix"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743BGTx",
+    "stmGlob": "STM32H743BGTx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743BITx",
+    "stmGlob": "STM32H743BITx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743IGKx",
+    "stmGlob": "STM32H743IGKx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743IGTx",
+    "stmGlob": "STM32H743IGTx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743IIKx",
+    "stmGlob": "STM32H743IIKx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743IITx",
+    "stmGlob": "STM32H743IITx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743VGHx",
+    "stmGlob": "STM32H743V(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743VIHx",
+    "stmGlob": "STM32H743V(G-I)Hx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743VGTx",
+    "stmGlob": "STM32H743VGTx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743VITx",
+    "stmGlob": "STM32H743VITx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743XGHx",
+    "stmGlob": "STM32H743XGHx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743XIHx",
+    "stmGlob": "STM32H743XIHx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743ZGTx",
+    "stmGlob": "STM32H743ZGTx"
+  },
+  {
+    "chibiDef": "STM32H743xx",
+    "mcuCode": "STM32H743ZITx",
+    "stmGlob": "STM32H743ZITx"
+  },
+  {
+    "chibiDef": "STM32H753xx",
+    "mcuCode": "STM32H753AIIx",
+    "stmGlob": "STM32H753AIIx"
+  },
+  {
+    "chibiDef": "STM32H753xx",
+    "mcuCode": "STM32H753BITx",
+    "stmGlob": "STM32H753BITx"
+  },
+  {
+    "chibiDef": "STM32H753xx",
+    "mcuCode": "STM32H753IIKx",
+    "stmGlob": "STM32H753IIKx"
+  },
+  {
+    "chibiDef": "STM32H753xx",
+    "mcuCode": "STM32H753IITx",
+    "stmGlob": "STM32H753IITx"
+  },
+  {
+    "chibiDef": "STM32H753xx",
+    "mcuCode": "STM32H753VIHx",
+    "stmGlob": "STM32H753VIHx"
+  },
+  {
+    "chibiDef": "STM32H753xx",
+    "mcuCode": "STM32H753VITx",
+    "stmGlob": "STM32H753VITx"
+  },
+  {
+    "chibiDef": "STM32H753xx",
+    "mcuCode": "STM32H753XIHx",
+    "stmGlob": "STM32H753XIHx"
+  },
+  {
+    "chibiDef": "STM32H753xx",
+    "mcuCode": "STM32H753ZITx",
+    "stmGlob": "STM32H753ZITx"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011D3Px",
+    "stmGlob": "STM32L011D(3-4)Px"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011D4Px",
+    "stmGlob": "STM32L011D(3-4)Px"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011E3Yx",
+    "stmGlob": "STM32L011E(3-4)Yx"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011E4Yx",
+    "stmGlob": "STM32L011E(3-4)Yx"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011F3Px",
+    "stmGlob": "STM32L011F(3-4)Px"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011F4Px",
+    "stmGlob": "STM32L011F(3-4)Px"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011F3Ux",
+    "stmGlob": "STM32L011F(3-4)Ux"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011F4Ux",
+    "stmGlob": "STM32L011F(3-4)Ux"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011G3Ux",
+    "stmGlob": "STM32L011G(3-4)Ux"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011G4Ux",
+    "stmGlob": "STM32L011G(3-4)Ux"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011K3Tx",
+    "stmGlob": "STM32L011K(3-4)Tx"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011K4Tx",
+    "stmGlob": "STM32L011K(3-4)Tx"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011K3Ux",
+    "stmGlob": "STM32L011K(3-4)Ux"
+  },
+  {
+    "chibiDef": "STM32L011xx",
+    "mcuCode": "STM32L011K4Ux",
+    "stmGlob": "STM32L011K(3-4)Ux"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031C4Tx",
+    "stmGlob": "STM32L031C(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031C6Tx",
+    "stmGlob": "STM32L031C(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031C4Ux",
+    "stmGlob": "STM32L031C(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031C6Ux",
+    "stmGlob": "STM32L031C(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031E4Yx",
+    "stmGlob": "STM32L031E(4-6)Yx"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031E6Yx",
+    "stmGlob": "STM32L031E(4-6)Yx"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031F4Px",
+    "stmGlob": "STM32L031F(4-6)Px"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031F6Px",
+    "stmGlob": "STM32L031F(4-6)Px"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031G4Ux",
+    "stmGlob": "STM32L031G(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031G6Ux",
+    "stmGlob": "STM32L031G(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031G6UxS",
+    "stmGlob": "STM32L031G6UxS"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031K4Tx",
+    "stmGlob": "STM32L031K(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031K6Tx",
+    "stmGlob": "STM32L031K(4-6)Tx"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031K4Ux",
+    "stmGlob": "STM32L031K(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32L031xx",
+    "mcuCode": "STM32L031K6Ux",
+    "stmGlob": "STM32L031K(4-6)Ux"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051C6Tx",
+    "stmGlob": "STM32L051C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051C8Tx",
+    "stmGlob": "STM32L051C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051C6Ux",
+    "stmGlob": "STM32L051C(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051C8Ux",
+    "stmGlob": "STM32L051C(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051K6Tx",
+    "stmGlob": "STM32L051K(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051K8Tx",
+    "stmGlob": "STM32L051K(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051K6Ux",
+    "stmGlob": "STM32L051K(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051K8Ux",
+    "stmGlob": "STM32L051K(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051R6Hx",
+    "stmGlob": "STM32L051R(6-8)Hx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051R8Hx",
+    "stmGlob": "STM32L051R(6-8)Hx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051R6Tx",
+    "stmGlob": "STM32L051R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051R8Tx",
+    "stmGlob": "STM32L051R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051T6Yx",
+    "stmGlob": "STM32L051T(6-8)Yx"
+  },
+  {
+    "chibiDef": "STM32L051xx",
+    "mcuCode": "STM32L051T8Yx",
+    "stmGlob": "STM32L051T(6-8)Yx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052C6Tx",
+    "stmGlob": "STM32L052C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052C8Tx",
+    "stmGlob": "STM32L052C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052C6Ux",
+    "stmGlob": "STM32L052C(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052C8Ux",
+    "stmGlob": "STM32L052C(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052K6Tx",
+    "stmGlob": "STM32L052K(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052K8Tx",
+    "stmGlob": "STM32L052K(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052K6Ux",
+    "stmGlob": "STM32L052K(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052K8Ux",
+    "stmGlob": "STM32L052K(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052R6Hx",
+    "stmGlob": "STM32L052R(6-8)Hx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052R8Hx",
+    "stmGlob": "STM32L052R(6-8)Hx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052R6Tx",
+    "stmGlob": "STM32L052R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052R8Tx",
+    "stmGlob": "STM32L052R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052T6Yx",
+    "stmGlob": "STM32L052T(6-8)Yx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052T8Yx",
+    "stmGlob": "STM32L052T(6-8)Yx"
+  },
+  {
+    "chibiDef": "STM32L052xx",
+    "mcuCode": "STM32L052T8Fx",
+    "stmGlob": "STM32L052T8Fx"
+  },
+  {
+    "chibiDef": "STM32L053xx",
+    "mcuCode": "STM32L053C6Tx",
+    "stmGlob": "STM32L053C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L053xx",
+    "mcuCode": "STM32L053C8Tx",
+    "stmGlob": "STM32L053C(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L053xx",
+    "mcuCode": "STM32L053C6Ux",
+    "stmGlob": "STM32L053C(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L053xx",
+    "mcuCode": "STM32L053C8Ux",
+    "stmGlob": "STM32L053C(6-8)Ux"
+  },
+  {
+    "chibiDef": "STM32L053xx",
+    "mcuCode": "STM32L053R6Hx",
+    "stmGlob": "STM32L053R(6-8)Hx"
+  },
+  {
+    "chibiDef": "STM32L053xx",
+    "mcuCode": "STM32L053R8Hx",
+    "stmGlob": "STM32L053R(6-8)Hx"
+  },
+  {
+    "chibiDef": "STM32L053xx",
+    "mcuCode": "STM32L053R6Tx",
+    "stmGlob": "STM32L053R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L053xx",
+    "mcuCode": "STM32L053R8Tx",
+    "stmGlob": "STM32L053R(6-8)Tx"
+  },
+  {
+    "chibiDef": "STM32L062xx",
+    "mcuCode": "STM32L062C8Ux",
+    "stmGlob": "STM32L062C8Ux"
+  },
+  {
+    "chibiDef": "STM32L062xx",
+    "mcuCode": "STM32L062K8Tx",
+    "stmGlob": "STM32L062K8Tx"
+  },
+  {
+    "chibiDef": "STM32L062xx",
+    "mcuCode": "STM32L062K8Ux",
+    "stmGlob": "STM32L062K8Ux"
+  },
+  {
+    "chibiDef": "STM32L063xx",
+    "mcuCode": "STM32L063C8Tx",
+    "stmGlob": "STM32L063C8Tx"
+  },
+  {
+    "chibiDef": "STM32L063xx",
+    "mcuCode": "STM32L063C8Ux",
+    "stmGlob": "STM32L063C8Ux"
+  },
+  {
+    "chibiDef": "STM32L063xx",
+    "mcuCode": "STM32L063R8Tx",
+    "stmGlob": "STM32L063R8Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071C8Tx",
+    "stmGlob": "STM32L071C8Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071C8Ux",
+    "stmGlob": "STM32L071C8Ux"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071CBTx",
+    "stmGlob": "STM32L071C(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071CZTx",
+    "stmGlob": "STM32L071C(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071CBUx",
+    "stmGlob": "STM32L071C(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071CZUx",
+    "stmGlob": "STM32L071C(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071CBYx",
+    "stmGlob": "STM32L071C(B-Z)Yx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071CZYx",
+    "stmGlob": "STM32L071C(B-Z)Yx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071K8Ux",
+    "stmGlob": "STM32L071K8Ux"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071KBTx",
+    "stmGlob": "STM32L071K(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071KZTx",
+    "stmGlob": "STM32L071K(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071KBUx",
+    "stmGlob": "STM32L071K(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071KZUx",
+    "stmGlob": "STM32L071K(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071RBHx",
+    "stmGlob": "STM32L071R(B-Z)Hx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071RZHx",
+    "stmGlob": "STM32L071R(B-Z)Hx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071RBTx",
+    "stmGlob": "STM32L071R(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071RZTx",
+    "stmGlob": "STM32L071R(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071V8Ix",
+    "stmGlob": "STM32L071V8Ix"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071V8Tx",
+    "stmGlob": "STM32L071V8Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071VBIx",
+    "stmGlob": "STM32L071V(B-Z)Ix"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071VZIx",
+    "stmGlob": "STM32L071V(B-Z)Ix"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071VBTx",
+    "stmGlob": "STM32L071V(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L071xx",
+    "mcuCode": "STM32L071VZTx",
+    "stmGlob": "STM32L071V(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072CBTx",
+    "stmGlob": "STM32L072C(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072CZTx",
+    "stmGlob": "STM32L072C(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072CBUx",
+    "stmGlob": "STM32L072C(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072CZUx",
+    "stmGlob": "STM32L072C(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072CBYx",
+    "stmGlob": "STM32L072C(B-Z)Yx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072CZYx",
+    "stmGlob": "STM32L072C(B-Z)Yx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072CZEx",
+    "stmGlob": "STM32L072CZEx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072KBTx",
+    "stmGlob": "STM32L072K(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072KZTx",
+    "stmGlob": "STM32L072K(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072KBUx",
+    "stmGlob": "STM32L072K(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072KZUx",
+    "stmGlob": "STM32L072K(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072RBHx",
+    "stmGlob": "STM32L072R(B-Z)Hx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072RZHx",
+    "stmGlob": "STM32L072R(B-Z)Hx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072RBIx",
+    "stmGlob": "STM32L072R(B-Z)Ix"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072RZIx",
+    "stmGlob": "STM32L072R(B-Z)Ix"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072RBTx",
+    "stmGlob": "STM32L072R(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072RZTx",
+    "stmGlob": "STM32L072R(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072V8Ix",
+    "stmGlob": "STM32L072V8Ix"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072V8Tx",
+    "stmGlob": "STM32L072V8Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072VBIx",
+    "stmGlob": "STM32L072V(B-Z)Ix"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072VZIx",
+    "stmGlob": "STM32L072V(B-Z)Ix"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072VBTx",
+    "stmGlob": "STM32L072V(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L072xx",
+    "mcuCode": "STM32L072VZTx",
+    "stmGlob": "STM32L072V(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073CBTx",
+    "stmGlob": "STM32L073C(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073CZTx",
+    "stmGlob": "STM32L073C(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073CBUx",
+    "stmGlob": "STM32L073C(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073CZUx",
+    "stmGlob": "STM32L073C(B-Z)Ux"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073RBHx",
+    "stmGlob": "STM32L073R(B-Z)Hx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073RZHx",
+    "stmGlob": "STM32L073R(B-Z)Hx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073RBTx",
+    "stmGlob": "STM32L073R(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073RZTx",
+    "stmGlob": "STM32L073R(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073RZIx",
+    "stmGlob": "STM32L073RZIx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073V8Ix",
+    "stmGlob": "STM32L073V8Ix"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073V8Tx",
+    "stmGlob": "STM32L073V8Tx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073VBIx",
+    "stmGlob": "STM32L073V(B-Z)Ix"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073VZIx",
+    "stmGlob": "STM32L073V(B-Z)Ix"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073VBTx",
+    "stmGlob": "STM32L073V(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L073xx",
+    "mcuCode": "STM32L073VZTx",
+    "stmGlob": "STM32L073V(B-Z)Tx"
+  },
+  {
+    "chibiDef": "STM32L100xB",
+    "mcuCode": "STM32L100RBTxA",
+    "stmGlob": "STM32L100R(8-B)TxA"
+  },
+  {
+    "chibiDef": "STM32L100xB",
+    "mcuCode": "STM32L100RBTx",
+    "stmGlob": "STM32L100R(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32L100xC",
+    "mcuCode": "STM32L100RCTx",
+    "stmGlob": "STM32L100RCTx"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151CBTxA",
+    "stmGlob": "STM32L151C(6-8-B)TxA"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151CBTx",
+    "stmGlob": "STM32L151C(6-8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151CBUxA",
+    "stmGlob": "STM32L151C(6-8-B)UxA"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151CBUx",
+    "stmGlob": "STM32L151C(6-8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151CCTx",
+    "stmGlob": "STM32L151CCTx"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151CCUx",
+    "stmGlob": "STM32L151CCUx"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151QCHx",
+    "stmGlob": "STM32L151QCHx"
+  },
+  {
+    "chibiDef": "STM32L151xD",
+    "mcuCode": "STM32L151QDHx",
+    "stmGlob": "STM32L151QDHx"
+  },
+  {
+    "chibiDef": "STM32L151xE",
+    "mcuCode": "STM32L151QEHx",
+    "stmGlob": "STM32L151QEHx"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151RBHxA",
+    "stmGlob": "STM32L151R(6-8-B)HxA"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151RBHx",
+    "stmGlob": "STM32L151R(6-8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151RBTxA",
+    "stmGlob": "STM32L151R(6-8-B)TxA"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151RBTx",
+    "stmGlob": "STM32L151R(6-8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151RCTxA",
+    "stmGlob": "STM32L151RCTxA"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151RCTx",
+    "stmGlob": "STM32L151RCTx"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151RCYx",
+    "stmGlob": "STM32L151RCYx"
+  },
+  {
+    "chibiDef": "STM32L151xD",
+    "mcuCode": "STM32L151RDTx",
+    "stmGlob": "STM32L151RDTx"
+  },
+  {
+    "chibiDef": "STM32L151xD",
+    "mcuCode": "STM32L151RDYx",
+    "stmGlob": "STM32L151RDYx"
+  },
+  {
+    "chibiDef": "STM32L151xE",
+    "mcuCode": "STM32L151RETx",
+    "stmGlob": "STM32L151RETx"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151UCYx",
+    "stmGlob": "STM32L151UCYx"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151VBHxA",
+    "stmGlob": "STM32L151V(8-B)HxA"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151VBHx",
+    "stmGlob": "STM32L151V(8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151VBTxA",
+    "stmGlob": "STM32L151V(8-B)TxA"
+  },
+  {
+    "chibiDef": "STM32L151xB",
+    "mcuCode": "STM32L151VBTx",
+    "stmGlob": "STM32L151V(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151VCHx",
+    "stmGlob": "STM32L151VCHx"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151VCTxA",
+    "stmGlob": "STM32L151VCTxA"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151VCTx",
+    "stmGlob": "STM32L151VCTx"
+  },
+  {
+    "chibiDef": "STM32L151xD",
+    "mcuCode": "STM32L151VDTx",
+    "stmGlob": "STM32L151VDTx"
+  },
+  {
+    "chibiDef": "STM32L151xD",
+    "mcuCode": "STM32L151VDTxX",
+    "stmGlob": "STM32L151VDTxX"
+  },
+  {
+    "chibiDef": "STM32L151xD",
+    "mcuCode": "STM32L151VDYxX",
+    "stmGlob": "STM32L151VDYxX"
+  },
+  {
+    "chibiDef": "STM32L151xE",
+    "mcuCode": "STM32L151VETx",
+    "stmGlob": "STM32L151VETx"
+  },
+  {
+    "chibiDef": "STM32L151xE",
+    "mcuCode": "STM32L151VEYx",
+    "stmGlob": "STM32L151VEYx"
+  },
+  {
+    "chibiDef": "STM32L151xC",
+    "mcuCode": "STM32L151ZCTx",
+    "stmGlob": "STM32L151ZCTx"
+  },
+  {
+    "chibiDef": "STM32L151xD",
+    "mcuCode": "STM32L151ZDTx",
+    "stmGlob": "STM32L151ZDTx"
+  },
+  {
+    "chibiDef": "STM32L151xE",
+    "mcuCode": "STM32L151ZETx",
+    "stmGlob": "STM32L151ZETx"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152CBTxA",
+    "stmGlob": "STM32L152C(6-8-B)TxA"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152CBTx",
+    "stmGlob": "STM32L152C(6-8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152CBUxA",
+    "stmGlob": "STM32L152C(6-8-B)UxA"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152CBUx",
+    "stmGlob": "STM32L152C(6-8-B)Ux"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152CCTx",
+    "stmGlob": "STM32L152CCTx"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152CCUx",
+    "stmGlob": "STM32L152CCUx"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152QCHx",
+    "stmGlob": "STM32L152QCHx"
+  },
+  {
+    "chibiDef": "STM32L152xD",
+    "mcuCode": "STM32L152QDHx",
+    "stmGlob": "STM32L152QDHx"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152RBHxA",
+    "stmGlob": "STM32L152R(6-8-B)HxA"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152RBHx",
+    "stmGlob": "STM32L152R(6-8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152RBTxA",
+    "stmGlob": "STM32L152R(6-8-B)TxA"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152RBTx",
+    "stmGlob": "STM32L152R(6-8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152RCTxA",
+    "stmGlob": "STM32L152RCTxA"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152RCTx",
+    "stmGlob": "STM32L152RCTx"
+  },
+  {
+    "chibiDef": "STM32L152xD",
+    "mcuCode": "STM32L152RDTx",
+    "stmGlob": "STM32L152RDTx"
+  },
+  {
+    "chibiDef": "STM32L152xD",
+    "mcuCode": "STM32L152RDYx",
+    "stmGlob": "STM32L152RDYx"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152UCYx",
+    "stmGlob": "STM32L152UCYx"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152VBHxA",
+    "stmGlob": "STM32L152V(8-B)HxA"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152VBHx",
+    "stmGlob": "STM32L152V(8-B)Hx"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152VBTxA",
+    "stmGlob": "STM32L152V(8-B)TxA"
+  },
+  {
+    "chibiDef": "STM32L152xB",
+    "mcuCode": "STM32L152VBTx",
+    "stmGlob": "STM32L152V(8-B)Tx"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152VCHx",
+    "stmGlob": "STM32L152VCHx"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152VCTxA",
+    "stmGlob": "STM32L152VCTxA"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152VCTx",
+    "stmGlob": "STM32L152VCTx"
+  },
+  {
+    "chibiDef": "STM32L152xD",
+    "mcuCode": "STM32L152VDTx",
+    "stmGlob": "STM32L152VDTx"
+  },
+  {
+    "chibiDef": "STM32L152xD",
+    "mcuCode": "STM32L152VDTxX",
+    "stmGlob": "STM32L152VDTxX"
+  },
+  {
+    "chibiDef": "STM32L152xC",
+    "mcuCode": "STM32L152ZCTx",
+    "stmGlob": "STM32L152ZCTx"
+  },
+  {
+    "chibiDef": "STM32L152xD",
+    "mcuCode": "STM32L152ZDTx",
+    "stmGlob": "STM32L152ZDTx"
+  },
+  {
+    "chibiDef": "STM32L162xC",
+    "mcuCode": "STM32L162QCHx",
+    "stmGlob": "STM32L162QCHx"
+  },
+  {
+    "chibiDef": "STM32L162xD",
+    "mcuCode": "STM32L162QDHx",
+    "stmGlob": "STM32L162QDHx"
+  },
+  {
+    "chibiDef": "STM32L162xC",
+    "mcuCode": "STM32L162RCTxA",
+    "stmGlob": "STM32L162RCTxA"
+  },
+  {
+    "chibiDef": "STM32L162xC",
+    "mcuCode": "STM32L162RCTx",
+    "stmGlob": "STM32L162RCTx"
+  },
+  {
+    "chibiDef": "STM32L162xD",
+    "mcuCode": "STM32L162RDTx",
+    "stmGlob": "STM32L162RDTx"
+  },
+  {
+    "chibiDef": "STM32L162xD",
+    "mcuCode": "STM32L162RDYx",
+    "stmGlob": "STM32L162RDYx"
+  },
+  {
+    "chibiDef": "STM32L162xE",
+    "mcuCode": "STM32L162RETx",
+    "stmGlob": "STM32L162RETx"
+  },
+  {
+    "chibiDef": "STM32L162xC",
+    "mcuCode": "STM32L162VCHx",
+    "stmGlob": "STM32L162VCHx"
+  },
+  {
+    "chibiDef": "STM32L162xC",
+    "mcuCode": "STM32L162VCTxA",
+    "stmGlob": "STM32L162VCTxA"
+  },
+  {
+    "chibiDef": "STM32L162xC",
+    "mcuCode": "STM32L162VCTx",
+    "stmGlob": "STM32L162VCTx"
+  },
+  {
+    "chibiDef": "STM32L162xD",
+    "mcuCode": "STM32L162VDTx",
+    "stmGlob": "STM32L162VDTx"
+  },
+  {
+    "chibiDef": "STM32L162xD",
+    "mcuCode": "STM32L162VDYxX",
+    "stmGlob": "STM32L162VDYxX"
+  },
+  {
+    "chibiDef": "STM32L162xE",
+    "mcuCode": "STM32L162VETx",
+    "stmGlob": "STM32L162VETx"
+  },
+  {
+    "chibiDef": "STM32L162xE",
+    "mcuCode": "STM32L162VEYx",
+    "stmGlob": "STM32L162VEYx"
+  },
+  {
+    "chibiDef": "STM32L162xC",
+    "mcuCode": "STM32L162ZCTx",
+    "stmGlob": "STM32L162ZCTx"
+  },
+  {
+    "chibiDef": "STM32L162xD",
+    "mcuCode": "STM32L162ZDTx",
+    "stmGlob": "STM32L162ZDTx"
+  },
+  {
+    "chibiDef": "STM32L162xE",
+    "mcuCode": "STM32L162ZETx",
+    "stmGlob": "STM32L162ZETx"
+  },
+  {
+    "chibiDef": "STM32L432xx",
+    "mcuCode": "STM32L432KBUx",
+    "stmGlob": "STM32L432K(B-C)Ux"
+  },
+  {
+    "chibiDef": "STM32L432xx",
+    "mcuCode": "STM32L432KCUx",
+    "stmGlob": "STM32L432K(B-C)Ux"
+  },
+  {
+    "chibiDef": "STM32L443xx",
+    "mcuCode": "STM32L443CCTx",
+    "stmGlob": "STM32L443CCTx"
+  },
+  {
+    "chibiDef": "STM32L443xx",
+    "mcuCode": "STM32L443CCUx",
+    "stmGlob": "STM32L443CCUx"
+  },
+  {
+    "chibiDef": "STM32L443xx",
+    "mcuCode": "STM32L443CCYx",
+    "stmGlob": "STM32L443CCYx"
+  },
+  {
+    "chibiDef": "STM32L443xx",
+    "mcuCode": "STM32L443RCIx",
+    "stmGlob": "STM32L443RCIx"
+  },
+  {
+    "chibiDef": "STM32L443xx",
+    "mcuCode": "STM32L443RCTx",
+    "stmGlob": "STM32L443RCTx"
+  },
+  {
+    "chibiDef": "STM32L443xx",
+    "mcuCode": "STM32L443RCYx",
+    "stmGlob": "STM32L443RCYx"
+  },
+  {
+    "chibiDef": "STM32L443xx",
+    "mcuCode": "STM32L443VCIx",
+    "stmGlob": "STM32L443VCIx"
+  },
+  {
+    "chibiDef": "STM32L443xx",
+    "mcuCode": "STM32L443VCTx",
+    "stmGlob": "STM32L443VCTx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476JEYx",
+    "stmGlob": "STM32L476J(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476JGYx",
+    "stmGlob": "STM32L476J(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476JGYxP",
+    "stmGlob": "STM32L476JGYxP"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476MEYx",
+    "stmGlob": "STM32L476M(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476MGYx",
+    "stmGlob": "STM32L476M(E-G)Yx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476QEIx",
+    "stmGlob": "STM32L476Q(E-G)Ix"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476QGIx",
+    "stmGlob": "STM32L476Q(E-G)Ix"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476RCTx",
+    "stmGlob": "STM32L476R(C-E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476RETx",
+    "stmGlob": "STM32L476R(C-E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476RGTx",
+    "stmGlob": "STM32L476R(C-E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476VCTx",
+    "stmGlob": "STM32L476V(C-E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476VETx",
+    "stmGlob": "STM32L476V(C-E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476VGTx",
+    "stmGlob": "STM32L476V(C-E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476ZETx",
+    "stmGlob": "STM32L476Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476ZGTx",
+    "stmGlob": "STM32L476Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476ZGJx",
+    "stmGlob": "STM32L476ZGJx"
+  },
+  {
+    "chibiDef": "STM32L476xx",
+    "mcuCode": "STM32L476ZGTxP",
+    "stmGlob": "STM32L476ZGTxP"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496AEIx",
+    "stmGlob": "STM32L496A(E-G)Ix"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496AGIx",
+    "stmGlob": "STM32L496A(E-G)Ix"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496AGIxP",
+    "stmGlob": "STM32L496AGIxP"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496QEIx",
+    "stmGlob": "STM32L496Q(E-G)Ix"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496QGIx",
+    "stmGlob": "STM32L496Q(E-G)Ix"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496QGIxP",
+    "stmGlob": "STM32L496QGIxP"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496RETx",
+    "stmGlob": "STM32L496R(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496RGTx",
+    "stmGlob": "STM32L496R(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496RGTxP",
+    "stmGlob": "STM32L496RGTxP"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496VETx",
+    "stmGlob": "STM32L496V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496VGTx",
+    "stmGlob": "STM32L496V(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496VGTxP",
+    "stmGlob": "STM32L496VGTxP"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496VGYxP",
+    "stmGlob": "STM32L496VGYxP"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496VGYx",
+    "stmGlob": "STM32L496VGYx"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496WGYxP",
+    "stmGlob": "STM32L496WGYxP"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496ZETx",
+    "stmGlob": "STM32L496Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496ZGTx",
+    "stmGlob": "STM32L496Z(E-G)Tx"
+  },
+  {
+    "chibiDef": "STM32L496xx",
+    "mcuCode": "STM32L496ZGTxP",
+    "stmGlob": "STM32L496ZGTxP"
+  }
+]

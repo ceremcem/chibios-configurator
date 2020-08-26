@@ -1,0 +1,5 @@
+# Generate necessary files 
+
+```
+make
+```

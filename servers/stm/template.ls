@@ -34,8 +34,8 @@ new class TemplateEngine extends Actor
             templates = readdirSyncRecursive dir 
             res = {}
             for template in templates
-                file = fs.readFileSync "#{dir}/#{template}"
-                compiled = ractive-compile file.to-string('utf-8'), data
+                file = fs.readFileSync "#{dir}/#{template}", "utf-8"
+                compiled = ractive-compile file, data
                 res[template] = compiled
             @log.log "Requested hardware definition."
             @send-response msg, res 
