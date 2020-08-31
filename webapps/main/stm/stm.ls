@@ -69,11 +69,12 @@ Ractive.components['stm'] = Ractive.extend do
                 |> map (.Name)
                 |> unique
 
-            #console.log "replace map: ", replace-map
+            # Generate possible peripherals
             human-readable = []
             for stm-code in peripherals
                 replaced = false
                 for short, meaning of @get \replaceMap
+                    # meaning: {id, name}
                     short-r = new RegExp short
                     #console.log "Examining if #p matches with #short", short-r
                     if stm-code.match short-r
@@ -81,10 +82,11 @@ Ractive.components['stm'] = Ractive.extend do
                         for replacement-obj in meaning 
                             for type, replacement of replacement-obj
                                 null # for object destruction 
-                            name = stm-code.replace short-r, replacement
+                            id = stm-code.replace short-r, replacement.id
+                            name = stm-code.replace short-r, replacement.name
                             #console.log "type is: #type, replacement is: #x"
                             human-readable.push do 
-                                id: name
+                                id: id
                                 name: name
                                 stm: stm-code
                                 type: type   
@@ -202,11 +204,11 @@ Ractive.components['stm'] = Ractive.extend do
 
         downloadHardware: (ctx) -> 
             return unless btn=ctx?component 
-
+            btn.state \doing 
             config = @get('configuration')
             err, res <~ btn.actor.send-request "@templating.get", {config}
-            if err 
-                btn.error err 
+            if err or res.error 
+                btn.error (err or res.error)
             else 
                 console.log res.data
                 zip = new JSZip

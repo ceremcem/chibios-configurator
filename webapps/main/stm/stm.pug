@@ -12,10 +12,11 @@
 
                     .ui.tag.label.mini ({{mcuList.length}})
 
-            .row
-                .column
-                    btn.green.mini(on-click="refreshSelected"): i.icon.refresh
-                    debug-obj(title="selected.pins" obj="{{selected.pins}}" public)
+            //-
+                .row
+                    .column
+                        btn.green.mini(on-click="refreshSelected"): i.icon.refresh
+                        debug-obj(title="selected.pins" obj="{{selected.pins}}" public)
 
             .row
                 .column 
