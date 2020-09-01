@@ -1,12 +1,12 @@
 require! 'dcs': {DcsTcpClient, Actor}
 require! '../../config'
 require! 'xml-js': convert
-require! 'fs': {readFileSync, readdirSync}
+require! 'fs'
 require! 'prelude-ls': {map, flatten, unique, find, filter}
 require! 'fancy-log': log 
 
 read-xml = (file) -> 
-    convert.xml2js readFileSync(file, "utf8"), 
+    convert.xml2js fs.readFileSync(file, "utf8"), 
         {+compact, +ignoreComment}
 
 new class Datasheet extends Actor
@@ -14,7 +14,7 @@ new class Datasheet extends Actor
         #families = read-xml "./stm-db/mcu/families.xml"
         @on-topic \@datasheet.ls.mcu, (msg) ~>
             log "list mcu requested"
-            mcu-list = readdirSync './stm-db/mcu'
+            mcu-list = fs.readdirSync './stm-db/mcu'
                 .filter (.startsWith \STM32)
                 .map (.replace /\..+$/, '') # remove extensions
             log "...returning #{mcu-list.length} results."
@@ -26,6 +26,7 @@ new class Datasheet extends Actor
             mcu-info = null 
             try 
                 mcu-info = (read-xml "./stm-db/mcu/#{msg.data.id}.xml").Mcu
+                fs.writeFileSync "./mcu-info.json", (JSON.stringify mcu-info, null, 2)
             catch 
                 error = e  
             @send-response msg, {info: mcu-info, error}

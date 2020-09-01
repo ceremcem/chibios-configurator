@@ -1,103 +1,13 @@
 #!/bin/bash
-
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-
-find_scada_root () {
-    local name=""
-    testing_dir=$1
-    while :; do
-        name=$(basename $testing_dir)
-        ls "$testing_dir/scada.js" > /dev/null 2>&1
-        if [[ "$?" == "0" ]]; then
-            echo "$testing_dir/scada.js"
-            return 0
-        elif [[ "$name" == "scada.js" ]]; then
-            echo $testing_dir
-            return 0
-        elif [[ "$name" == "/" ]]; then
-            return 255
-        else
-            testing_dir=$(realpath "$testing_dir/..")
-        fi
-    done
-}
-
-watch=
-if [[ "$1" = "-w" ]]; then
-    echo "Watch mode enabled."
-    watch=true
-    shift
-fi
-
-filename=$1
-
-if [[ ! -f $filename ]]; then
-    echo "First argument should be a file to run."
-    exit 255
-fi
-
-base_dir=$(dirname $filename)
-errcho(){ >&2 echo $@; }
-#errcho "DEBUG: Base Dir: $base_dir"
-
-SCADA_DIR=$(find_scada_root $base_dir)
-
-if [[ -d $SCADA_DIR ]]; then
-    #echo "DEBUG: found scada root: $SCADA_DIR"
-    SCADA_MODULES="${SCADA_DIR}/lib"
-    PROJECT_PATH=$(realpath "${SCADA_DIR}/..")
-
-    #errcho "ScadaJS project path: ${PROJECT_PATH}"
-
-    FOUND_MODULES=
-    # add every `node_modules` into the path
-    while IFS= read -r module; do
-        #echo "++++++++++ adding path: $module"
-        FOUND_MODULES="${FOUND_MODULES}:$module"
-    done < <(find $PROJECT_PATH -type d -name "node_modules" 2> /dev/null | grep -v "node_modules\/" )
-fi
-
-export NODE_PATH="${SCADA_MODULES}:${FOUND_MODULES}:${NODE_PATH}"
-
-
-
-lsFile="$filename"
-shift
-set-pane-title () {
-    if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
-        #tmux select-pane -T $1                 # right corner
-        #tmux set pane-border-status bottom     # extra line 
-        tmux rename-window $1
+while :; do 
+    if [[ -d "$DIR/scada.js" ]]; then 
+        source $DIR/scada.js/tools/run-ls
+        break
     fi
-
-}
-set-pane-title ${lsFile%.ls}
-
-if [[ -z $watch ]]; then
-    lsc $lsFile "$@"
-else
-
-    LTIME=
-    CMD_PID=
-
-    cleanup(){
-        [[ -n $CMD_PID ]] && kill $CMD_PID
-    }
-    trap cleanup EXIT
-
-    while :; do
-       ATIME=`stat -c %Z "$lsFile"`
-       if [[ "$ATIME" != "$LTIME" ]]; then
-            if [[ -n $CMD_PID ]]; then
-                echo "---------------------------------------"
-                echo "|             Restarting...           |"
-                echo "---------------------------------------"
-                kill $CMD_PID
-            fi
-            lsc $lsFile "$@" &
-            CMD_PID=$!
-            LTIME=$ATIME
-       fi
-       sleep 2
-    done
-fi
+    DIR=$(dirname $DIR)
+    if [[ "$DIR" = "/" ]]; then
+        echo "Scada.js root can not be found."
+        break
+    fi
+done

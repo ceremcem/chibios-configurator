@@ -1,7 +1,7 @@
 require! 'fs'
 require! 'prelude-ls': {sort-by, values, flatten}
 
-chibi-defs = fs.readFileSync './chibi-stm-headers.txt', "utf-8" 
+chibi-defs = fs.readFileSync './chibi-stm-families.txt', "utf-8" 
     .split /\r?\n/ # not a big file, split is okay.
 chibi-family = []
 for def in chibi-defs when def 
@@ -56,9 +56,7 @@ for chibi-family when not ..matched
     console.error "#{..definition} \t does not match any known STM MCU type."
 
 try
-    fs.writeFileSync "supported-mcus.json", """
-        export supported-mcus = #{JSON.stringify match-list, null, 2}
-        """
+    fs.writeFileSync "supported-mcus.json", JSON.stringify match-list, null, 2
     console.log "Supported MCU's are written to file."
 catch 
     console.error e 

@@ -1,4 +1,4 @@
-export supported-mcus = [
+[
   {
     "chibiDef": "STM32F030x6",
     "mcuCode": "STM32F030C6Tx",

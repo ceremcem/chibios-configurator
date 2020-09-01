@@ -23,6 +23,8 @@ if require.main is module
 
         'templating':
             passwd-hash: hash-passwd "1234"
+            routes: 
+                \@datasheet.**
 
 
 

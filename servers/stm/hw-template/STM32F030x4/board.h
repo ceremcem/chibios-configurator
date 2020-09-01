@@ -19,27 +19,25 @@
 
 /*
  * MCU type as defined in the ST header.
- * Generated for {{mcu}}
+ * Generated for {{mcu}} 
  * Pinout is: 
  {{#each Object.keys(pinout) as pin}}
  *   - {{pin}}: {{pinout[pin].peripheral.name}}
  {{/each}}
  */
 
-#define STM32F030x4
-#define STM32F030x6 // see https://github.com/ChibiOS/ChibiOS/pull/31
+#define {{mcu.chibiDef}}
+{{#if mcu.chibiDef === 'STM32F030x4'}}
+    #define STM32F030x6 // see https://github.com/ChibiOS/ChibiOS/pull/31
+{{/if}}
+
 
 /*
  * IO pins assignments.
  */
-#define GPIOA_PWM1_3        10u
-#define GPIOA_0             0
-#define GPIOA_1             1
-#define GPIOA_2             2
-#define GPIOA_3             3
-#define GPIOA_4             4
-#define GPIOA_5             5
-#define GPIOA_6             6
+{{#each pinout}}{{#with pinout[@key] as pin, @key as pinNo}}
+#define {{pin.ioName}}   {{pinNo}}
+{{/with}}{{/each}}
 
 #include "stm32f030_init_io.h"
 
