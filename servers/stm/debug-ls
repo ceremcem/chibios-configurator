@@ -4,7 +4,6 @@ while :; do
     if [[ -d "$DIR/scada.js" ]]; then 
         r=$DIR
         source $r/scada.js/tools/node-path.sh
-        echo "NODE_PATH: $NODE_PATH"
         source $r/scada.js/tools/debug-ls/debug-ls
         break
     fi
