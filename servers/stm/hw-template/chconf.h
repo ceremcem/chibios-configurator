@@ -33,7 +33,13 @@
 
 /*============= OVERWRITES ================== */
 #define CH_CFG_USE_TM                       FALSE
-//#define CH_CFG_ST_FREQUENCY                 100000
+#define CH_CFG_ST_FREQUENCY                 10000
+//#define CH_CFG_USE_FACTORY                  TRUE
+//#define CH_DBG_SYSTEM_STATE_CHECK           TRUE
+//#define CH_DBG_TRACE_MASK                   CH_DBG_TRACE_MASK_ALL
+//#define CH_DBG_ENABLE_STACK_CHECK           TRUE
+//#define CH_DBG_FILL_THREADS                 TRUE
+
 /*========== END OF OVERWRITES ============== */
 
 

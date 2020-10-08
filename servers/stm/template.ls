@@ -4,16 +4,64 @@ require! 'fs'
 require! './ractive-template': {ractive-compile}
 require! './readdir-sync-recursive': {readdirSyncRecursive}
 require! './supported-mcus.json'
-require! 'prelude-ls': {find, map, pairs-to-obj}
+require! 'prelude-ls': {
+    find, map, pairs-to-obj, 
+    obj-to-pairs, group-by, unique, filter
+    pairs-to-obj}
+require! './read-xml': {read-xml}
+require! './read-lson': {read-lson}
+require! 'fancy-log': log 
+
+
+mustache-apply = (str, data) -> 
+    for k, v of data
+        str = str.replace (new RegExp "{{\s*#{k}\s*}}", 'gi'), v
+    return str 
+
+SECOND_CHAR = 1
 
 new class TemplateEngine extends Actor
     action: ->
         @on-topic \@templating.get, (msg) ~> 
+            # backup the original configuration
             config-orig = JSON.stringify msg.data.config, null, 2
-            data = {}
-            for mcu, pinout of msg.data.config
-                data["mcu"] = find (.stmGlob is mcu), supported-mcus
-                data["pinout"] = pinout 
+
+            data = 
+                hal-use: []
+                adc: 
+                    isContinuous: null
+                    driver: "ADCD1"         # ADC Driver
+                    conf: "adcgrpcfg1"   # ADCConversionGroup struct
+                    callback: "adcReadCallback1"
+                    bufferName: "samples_buf1"
+                    CHSEL: []
+                    sampling-rate: (rate) -> 
+                        # Usage: samplingRate("28 cycles") # => ADC_SMPR_SMP_13P5
+                        #
+                        # See os/hal/ports/STM32/LLD/ADCv1/hal_adc_lld.h -> Sampling rates
+                        '''
+                        #if defined(STM32F0XX) || defined(__DOXYGEN__)
+                        #define ADC_SMPR_SMP_1P5        0U  /**< @brief 14 cycles conversion time   */
+                        #define ADC_SMPR_SMP_7P5        1U  /**< @brief 21 cycles conversion time.  */
+                        #define ADC_SMPR_SMP_13P5       2U  /**< @brief 28 cycles conversion time.  */
+                        #define ADC_SMPR_SMP_28P5       3U  /**< @brief 41 cycles conversion time.  */
+                        #define ADC_SMPR_SMP_41P5       4U  /**< @brief 54 cycles conversion time.  */
+                        #define ADC_SMPR_SMP_55P5       5U  /**< @brief 68 cycles conversion time.  */
+                        #define ADC_SMPR_SMP_71P5       6U  /**< @brief 84 cycles conversion time.  */
+                        #define ADC_SMPR_SMP_239P5      7U  /**< @brief 252 cycles conversion time. */
+                        '''.split '\n' 
+                            .find (.match (new RegExp("(#{rate})", 'i')) ?.0) 
+                            ?.match(/#define\s+(\w+)\s+/) .1
+
+                    # See os/common/ext/ST/STM32F0xx/stm32f030x6.h
+                    cfgr1: 
+                        * \ADC_CFGR1_CONT       # TODO: set only when continuous mode is selected
+                        * \ADC_CFGR1_RES_12BIT
+
+                    
+
+            [mcu, pinout] = obj-to-pairs msg.data.config .0
+            data.mcu = find (.stmGlob is mcu), supported-mcus # eg. 
 
             response = {}
 
@@ -23,30 +71,112 @@ new class TemplateEngine extends Actor
                 dir = "./hw-template"
                 templates = readdirSyncRecursive dir 
                 err, res <~ @send-request "@datasheet.mcu-info", {id: mcu}
-                if e=(err or res.error)
+                if e=(err or res.data.error)
                     return s.go(e)
-
-                # key: pin number (eg. 5), value: pin name (eg. PA5)
-                pin-names = res.data.info.Pin 
+                datasheet = res.data.info
+                # Object format: { "#pinNumber": "#pinName" } 
+                # eg. {5: "PA5"}
+                pin-names = datasheet.Pin 
                     |> map (._attributes) 
                     |> map (-> [it.Position, it.Name.replace /-.+/, '']) 
                     |> pairs-to-obj
 
+                # get available GPIO ports 
+                gpio-ports = datasheet.Pin
+                    |> map (._attributes)
+                    |> filter (.Type is "I/O")
+                    |> map (.Name.1)
+                    |> unique
+                    |> map (x) -> "GPIO#{x}"
+
                 # Generate parameters 
-                for pin, pinout of data.pinout 
-                    pinout.pin-name = pin-names[pin]
-                    pinout.io-name = "#{pin-names[pin]}_#{pinout.peripheral.type.to-upper-case!}"
-                    # Requires to setup Alternate Function
-                    pinout.af = pinout.peripheral.type not in <[ din dout ]> 
-                    pinout.gpio-port = "GPIO" + pin-names[pin][1].to-upper-case!
+                # 
+                # NOTE: "Reading the Reference Manual is not optional": http://www.chibios.com/forum/viewtopic.php?t=3756#p27969
+                #
+                data.GPIO_REGISTERS = <[ MODER OTYPER OSPEEDR PUPDR ODR AFRL AFRH ]> 
+                # get the Alternate Function table
+                mapping = read-lson "./af-mappings/#{data.mcu.chibiDef}.ls"
+                get-af = (pin, peripheral) !-> 
+                    for af of o=mapping[pin] or {}
+                        if o[af].match(peripheral) or peripheral.match(o[af])
+                            return {
+                                af-value: af.match /AF(\d)+/ .1
+                                af-name: af 
+                                define: "#{pin}_#{af}_#{peripheral}"
+                            }
+                    return undefined 
+
+                try 
+                    for pin, setup of pinout 
+                        # setup = {peripheral, config}
+                        setup
+                            ..pin-name = pin-names[pin]
+                            ..io-name = "#{pin-names[pin]}_#{setup.peripheral.type.toUpperCase!}"
+                            # Requires to setup Alternate Function
+                            ..gpio-port = "GPIO#{pin-names[pin][SECOND_CHAR].toUpperCase!}"
+                            ..gpio-no = pin-names[pin].substring 2 |> parse-int 
+
+                        io = setup.io-name
+                        AFRx = if setup.gpio-no <= 7 then "AFRL" else "AFRH"
+                        af = null  # Alternate Function 
+                        setup.registerMacro = 
+                            # For MODER, see Reference Manual, 8.4
+                            MODER: switch setup.peripheral.type 
+                                | \din => 
+                                    "PIN_MODE_INPUT(#io)"
+                                | \dout => 
+                                    "PIN_MODE_OUTPUT(#io)"
+                                | <[ adcIn ]> =>
+                                    data.hal-use.push "ADC"  
+                                    if setup.config.mode is \continuous 
+                                        data.adc.isContinuous = yes 
+                                        data.adc.period = setup.config.period
+                                    ch-num = setup.peripheral.stm.match /(\d+)/ .1 
+                                    data.adc.CHSEL.push "ADC_CHSELR_CHSEL#{ch-num}"
+                                    "PIN_MODE_ANALOG(#io)" 
+                                | otherwise =>
+                                    if get-af(setup.pin-name, setup.peripheral.stm)
+                                        af = {name: that.define, value: that.af-value}
+                                        data.[]define.push af
+                                    if (type=setup.peripheral.type) in <[ adc pwm serial ]>
+                                        data.hal-use.push type.toUpperCase!
+                                    "PIN_MODE_ALTERNATE(#io)"
+
+                            OTYPER: if setup.af
+                                "PIN_OTYPE_PUSHPULL(#io)"
+
+                            OSPEEDR: switch setup.peripheral.type 
+                                | \swdio \pwm => 
+                                    "PIN_OSPEED_40M(#io)"
+
+                            PUPDR: switch setup.peripheral.type
+                                | \swdio => "PIN_PUPDR_PULLUP(#io)"
+                                | \swclk => "PIN_PUPDR_PULLDOWN(#io)"
+
+                            # As stated in the Reference Manual, Alternate Functions are 
+                            # documented in device datasheet. 
+                            "#{AFRx}": if af then "PIN_AFIO_AF(#io, #{af.name})"
+                catch
+                    log e 
+                    return s.go(e)
+
+                data.pinout = pinout  
+
+                # Default definitions must be generated for all GPIO ports 
+                for gpio-ports
+                    data.{}by-gpio[..] = []
+
+                data.by-gpio <<<< group-by (.gpio-port), 
+                    [{...setup} <<< {pin} for pin, setup of pinout]
+
 
                 /*********************************************************
                 data.pinout = {
-                    pin-number: 
+                    "#pinNumber": 
                         peripheral: # Object
                             id: String, peripheral id, eg. "din" or "pwm-1.3", see webapps/main/stm/peripheral-defs.ls
                             name: String, Human readable name 
-                            stm: String, STM type, eg. GPIO
+                            stm: String, STM type, eg. GPIO or TIM1_CH3N
                             type: String, peripheral type, eg. din for Digital Input
 
                         config: # Object, Configuration regarding to @peripheral.type 
@@ -57,6 +187,8 @@ new class TemplateEngine extends Actor
 
                         gpio-port: eg. GPIOA
 
+                        gpio-no: eg. 1 for PA1, 5 for PB5
+
 
                 *********************************************************/
                 
@@ -64,13 +196,20 @@ new class TemplateEngine extends Actor
                 for template in templates
                     file = fs.readFileSync "#{dir}/#{template}", "utf-8"
                     compiled = ractive-compile file, data
+
+                    # Replace Mustache variables in file/folder names
+                    template = mustache-apply template, do
+                        mcu: data.mcu.chibiDef
+
                     response[template] = compiled
                 response["config.json"] =  config-orig 
                 s.go!
             else 
                 response["error"] = "Unknown MCU: #{mcu}"
-            <~ b.joined
+            err <~ b.joined
             @log.log "Requested hardware definition."
+            if err 
+                response.error = err 
             @send-response msg, response
 
 

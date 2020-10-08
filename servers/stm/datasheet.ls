@@ -1,13 +1,9 @@
 require! 'dcs': {DcsTcpClient, Actor}
 require! '../../config'
-require! 'xml-js': convert
 require! 'fs'
 require! 'prelude-ls': {map, flatten, unique, find, filter}
 require! 'fancy-log': log 
-
-read-xml = (file) -> 
-    convert.xml2js fs.readFileSync(file, "utf8"), 
-        {+compact, +ignoreComment}
+require! './read-xml': {read-xml}
 
 new class Datasheet extends Actor
     action: ->
@@ -26,7 +22,6 @@ new class Datasheet extends Actor
             mcu-info = null 
             try 
                 mcu-info = (read-xml "./stm-db/mcu/#{msg.data.id}.xml").Mcu
-                fs.writeFileSync "./mcu-info.json", (JSON.stringify mcu-info, null, 2)
             catch 
                 error = e  
             @send-response msg, {info: mcu-info, error}

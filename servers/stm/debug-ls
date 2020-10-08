@@ -3,13 +3,13 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 while :; do 
     if [[ -d "$DIR/scada.js" ]]; then 
         r=$DIR
-        source $r/scada.js/tools/node-path.sh
-        source $r/scada.js/tools/debug-ls/debug-ls
         break
     fi
     DIR=$(dirname $DIR)
     if [[ "$DIR" = "/" ]]; then
         echo "Scada.js root can not be found."
-        break
+        exit 2
     fi
 done
+source $r/scada.js/tools/node-path.sh
+source $r/scada.js/tools/debug-ls/debug-ls

@@ -35,8 +35,9 @@
 
 /* Overwrites */
 #define PAL_USE_CALLBACKS                   TRUE
-//#define HAL_USE_SERIAL                      TRUE
-#define HAL_USE_PWM                         TRUE
+{{#each halUse as peripheral}}
+#define HAL_USE_{{peripheral}}              TRUE
+{{/each}}
 /* End of overwrites */
 
 /**
