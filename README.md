@@ -2,6 +2,10 @@
 
 Generates ChibiOS configurations.
 
+# Live Demo
+
+https://aktos.io/chibi-config/
+
 # Development 
 
 1. Setup your environment: (see ./scada.js/doc/using-virtual-environment.md)
