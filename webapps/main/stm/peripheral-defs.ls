@@ -35,6 +35,10 @@ export replace-map =
         swdio: 
             id: "swdio"
             name: "SW Data"
+    "USART([0-9]+)_(.+)":
+        serial:
+            id: "usart-$1-$2"
+            name: "USART ($1) $2"
 
 
 export peripheralConfigs =
@@ -46,3 +50,8 @@ export peripheralConfigs =
     dout:
         * {id: \pushpull,       name: "Push-pull"}
         * {id: \opencollector,  name: "Open collector"}
+
+    adc-in: 
+        * {id: \oneshot,        name: "One Shot Conversion"}
+        * {id: \continuous,     name: "Circular Buffer"}
+        * {id: \linear,         name: "Linear Buffer"}

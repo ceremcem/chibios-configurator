@@ -5,18 +5,37 @@
         on-select="pinPeripheralSelected"
         disabled="{{newSetting.pin === null}}")
 
-.field
-    +if('newSetting.peripheral')
-        +with('newSetting.peripheral.type as type')
-            +iff('type === "din"')
++if('newSetting.peripheral')
+    +with('newSetting.peripheral.type as type, \
+            newSetting.config as config')
+        +iff('type === "din"')
+            label Mode
+            .field
                 dropdown(
                     data="{{peripheralConfigs.din}}"
                     selected-key="{{newSetting.config.mode}}")
-            +elif('type === "dout"')
+        +elif('type === "dout"')
+            label Mode
+            .field
                 dropdown(
                     data="{{peripheralConfigs.dout}}"
                     selected-key="{{newSetting.config.mode}}")
+        +elif('type === "adcIn"')
+            label Mode
+            .field
+                dropdown(
+                    data="{{peripheralConfigs.adcIn}}"
+                    selected-key="{{newSetting.config.mode}}")
+            +iff('config.mode === "continuous"')
+                .field 
+                    label Period 
+                    .ui.right.labeled.input
+                        input(value="{{newSetting.config.period}}" type="number") 
+                        .ui.basic.label ms
+            +else
+                +set('newSetting.config.period', undefined)
             +endif
+        +endif
 .field 
     .ui.buttons
         ack-button.green(on-click="configurePin") Accept

@@ -4,6 +4,12 @@
         .ui.stackable.grid
             .row
                 .column
+                    .ui.form
+                        .field
+                            label Board Name
+                            input(value="{{selected.boardName}}")
+            .row
+                .column
                     ack-button(on-click="lsMcu") Get Available MCU's
                     dropdown(
                         simple-data="{{mcuList}}" 
@@ -32,15 +38,21 @@
                     h3 Peripheral assignment by Pin
                     .ui.form
                         .field
-                            .ui.label.green {{newSetting.pin || selected.unavailable}}
-                            +iff('configuration[selected.mcu][newSetting.pin] \
-                                && ! overrideAllowed')
-                                //- this pin is already configured, confirm to override
-                                .field
-                                    btn.orange(on-click="@.set('overrideAllowed', true)") Edit
-                            +else
+                            .ui.tiny.buttons
+                                btn.green {{newSetting.pin || selected.unavailable}}
+                                btn(on-click="closeEdited" 
+                                    class="{{#newSetting.pin}}red{{else}}gray{{/}}"
+                                    tooltip="Close current pin setting window")
+                                    i.icon.close
+                        +iff('configuration[selected.mcu][newSetting.pin] \
+                            && ! overrideAllowed')
+                            //- this pin is already configured, confirm to override
+                            .field
+                                btn.orange(on-click="@.set('overrideAllowed', true)") Edit
+                        +else
+                            +if('newSetting.pin')
                                 include ./peripheral-config.pug
-                            +endif
+                        +endif
 
                         .field
                             label Download Hardware Definition 

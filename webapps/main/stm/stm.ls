@@ -20,6 +20,7 @@ Ractive.components['stm'] = Ractive.extend do
             datasheet: null
             unavailable: "(not selected)"
             pins: []
+            board-name: "my-board"
 
         # the pin currently being configured.
         newSetting: 
@@ -100,14 +101,21 @@ Ractive.components['stm'] = Ractive.extend do
             return human-readable
 
     on:
-        init: -> 
+        complete: -> 
             # Save the data before leaving the app
             window.addEventListener "beforeunload", ((e) ~> 
-                storage
-                    ..set \selected, @get \selected 
-                    ..set \mcuList, @get \mcuList
-                    ..set \configuration, @get \configuration 
-                ), false
+                @fire \saveProject
+            ), false
+
+            @observe "configuration", ~> 
+                @fire \saveProject
+
+        saveProject: (ctx) -> 
+            console.log "Project saved, #{Date.now!}"
+            storage
+                ..set \selected, @get \selected 
+                ..set \mcuList, @get \mcuList
+                ..set \configuration, @get \configuration             
 
         lsMcu: (ctx) -> 
             return unless btn=ctx?component 
@@ -189,6 +197,7 @@ Ractive.components['stm'] = Ractive.extend do
                     """
             if answer is \yes 
                 @delete "configuration.#{@get 'selected.mcu'}", "#{pin-number}"
+                @fire \closeEdited
                 PNotify.success do 
                     text: "Removed Pin-#{pin-number}"
                     addClass: "nonblock"                
@@ -207,7 +216,7 @@ Ractive.components['stm'] = Ractive.extend do
             btn.state \doing 
             config = @get('configuration')
             err, res <~ btn.actor.send-request "@templating.get", {config}
-            if err or res.error 
+            if err or res.data.error 
                 btn.error (err or res.error)
             else 
                 console.log res.data
@@ -215,5 +224,10 @@ Ractive.components['stm'] = Ractive.extend do
                 for name, content of res.data 
                     zip.file name, content 
                 content <~ zip.generate-async {type: \blob} .then
-                create-download "hw.zip", content 
+                create-download "#{@get 'selected.boardName' .replace ' ', '-'}.zip"
+                    , content 
                 btn.state \done...
+
+        closeEdited: (ctx) -> 
+            @set \newSetting, {}
+
