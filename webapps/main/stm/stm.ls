@@ -216,8 +216,8 @@ Ractive.components['stm'] = Ractive.extend do
             btn.state \doing 
             config = @get('configuration')
             err, res <~ btn.actor.send-request "@templating.get", {config}
-            if err or res.data.error 
-                btn.error (err or res.error)
+            if e=(err or res.data.error) 
+                btn.error e
             else 
                 console.log res.data
                 zip = new JSZip

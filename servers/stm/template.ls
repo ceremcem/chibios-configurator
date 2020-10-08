@@ -58,10 +58,12 @@ new class TemplateEngine extends Actor
                         * \ADC_CFGR1_CONT       # TODO: set only when continuous mode is selected
                         * \ADC_CFGR1_RES_12BIT
 
-                    
-
-            [mcu, pinout] = obj-to-pairs msg.data.config .0
-            data.mcu = find (.stmGlob is mcu), supported-mcus # eg. 
+            try
+                [mcu, pinout] = obj-to-pairs msg.data.config .0
+                data.mcu = find (.stmGlob is mcu), supported-mcus # eg. 
+            catch
+                @send-response msg, {error: "Configuration seems to be empty."}
+                return 
 
             response = {}
 
@@ -95,7 +97,14 @@ new class TemplateEngine extends Actor
                 #
                 data.GPIO_REGISTERS = <[ MODER OTYPER OSPEEDR PUPDR ODR AFRL AFRH ]> 
                 # get the Alternate Function table
-                mapping = read-lson "./af-mappings/#{data.mcu.chibiDef}.ls"
+                try
+                    mapping = read-lson "./af-mappings/#{data.mcu.chibiDef}.ls"
+                catch
+                    @send-response msg, {error: "No Alternate Function 
+                        definition is found for #{data.mcu.chibiDef}. \n
+                        See 'servers/stm/af-mappings/' for available MCU's."}
+                    return 
+
                 get-af = (pin, peripheral) !-> 
                     for af of o=mapping[pin] or {}
                         if o[af].match(peripheral) or peripheral.match(o[af])
