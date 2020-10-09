@@ -224,8 +224,8 @@ Ractive.components['stm'] = Ractive.extend do
                 for name, content of res.data 
                     zip.file name, content 
                 content <~ zip.generate-async {type: \blob} .then
-                create-download "#{@get 'selected.boardName' .replace ' ', '-'}.zip"
-                    , content 
+                filename = "#{@get 'selected.boardName' .replace ' ', '-'}.zip"
+                create-download filename, content, "application/zip"
                 btn.state \done...
 
         closeEdited: (ctx) -> 
