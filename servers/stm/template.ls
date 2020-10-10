@@ -120,7 +120,7 @@ new class TemplateEngine extends Actor
                         # setup = {peripheral, config}
                         setup
                             ..pin-name = pin-names[pin]
-                            ..io-name = "#{pin-names[pin]}_#{setup.peripheral.type.toUpperCase!}"
+                            ..io-name = "#{pin-names[pin]}_#{setup.peripheral |> (-> it.type or it.id) |> (.toUpperCase!)}"
                             # Requires to setup Alternate Function
                             ..gpio-port = "GPIO#{pin-names[pin][SECOND_CHAR].toUpperCase!}"
                             ..gpio-no = pin-names[pin].substring 2 |> parse-int 
