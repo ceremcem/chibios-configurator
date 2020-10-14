@@ -43,15 +43,26 @@ export replace-map =
 
 export peripheralConfigs =
     din:
-        * {id: \pullup,         name: "Pull up"}
-        * {id: \pulldown,       name: "Pull down"}
-        * {id: \float,          name: "Float"}
+        mode:
+            * {id: \pullup,         name: "Pull up"}
+            * {id: \pulldown,       name: "Pull down"}
+            * {id: \float,          name: "Float"}
 
     dout:
-        * {id: \pushpull,       name: "Push-pull"}
-        * {id: \opencollector,  name: "Open collector"}
+        mode:
+            * {id: \pushpull,       name: "Push-pull"}
+            * {id: \opencollector,  name: "Open collector"}
 
-    adc-in: 
-        * {id: \oneshot,        name: "One Shot Conversion"}
-        * {id: \continuous,     name: "Circular Buffer"}
-        * {id: \linear,         name: "Linear Buffer"}
+    adc-in:
+        conversion: 
+            * {id: "onDemand",       name: "On-demand/Periodic Conversion"}
+            * {id: "continuous",     name: "Continuous Conversion"}
+        # if conversion is onDemand
+        poll:
+            * id: "manualPolling"
+              name: "Manual Polling"
+              _tooltip: "User is responsible to call adcStartConversion() manually."
+            * id: "periodic"       
+              name: "Periodic Polling"
+              _tooltip: "Uses a General Purpose Timer"
+

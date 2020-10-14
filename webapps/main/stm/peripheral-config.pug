@@ -12,28 +12,38 @@
             label Mode
             .field
                 dropdown(
-                    data="{{peripheralConfigs.din}}"
+                    data="{{peripheralConfigs.din.mode}}"
                     selected-key="{{newSetting.config.mode}}")
         +elif('type === "dout"')
             label Mode
             .field
                 dropdown(
-                    data="{{peripheralConfigs.dout}}"
+                    data="{{peripheralConfigs.dout.mode}}"
                     selected-key="{{newSetting.config.mode}}")
         +elif('type === "adcIn"')
-            label Mode
+            label Conversion
             .field
                 dropdown(
-                    data="{{peripheralConfigs.adcIn}}"
-                    selected-key="{{newSetting.config.mode}}")
-            +iff('config.mode === "continuous"')
+                    data="{{peripheralConfigs.adcIn.conversion}}"
+                    selected-key="{{newSetting.config.conversion}}")
+            +if('newSetting.config.conversion === "continuous"')
+                +set('newSetting.config.poll', undefined)
+
+            +if('newSetting.config.conversion === "onDemand"')
+                label Polling Method
+                .field
+                    dropdown(
+                        data="{{peripheralConfigs.adcIn.poll}}"
+                        selected-key="{{newSetting.config.poll}}")
+            +iff('newSetting.config.poll === "periodic"')
+                label Period
                 .field 
-                    label Period 
                     .ui.right.labeled.input
                         input(value="{{newSetting.config.period}}" type="number") 
                         .ui.basic.label ms
             +else
                 +set('newSetting.config.period', undefined)
+
             +endif
         +endif
 .field 

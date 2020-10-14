@@ -6,9 +6,10 @@ extern void init_io(void); // defined in io.c
 
 {{#if halUse.includes("ADC")}}
 void {{adc.callback}}(ADCDriver *adcp, adcsample_t *buffer, size_t n);
+static void {{adc.gpt.callback}}(GPTDriver *gptp);
 
-#define ADC_BUF_DEPTH 1 // We'll read one by one
-#define ADC_CH_NUM {{adc.channels.length}}    // How many channel you use at same time
+#define ADC_BUF_DEPTH 1 
+#define ADC_CH_NUM {{adc.CHSEL.length}}    // How many channel you use at same time
 
 // Create buffer to store ADC results. 
 // This is a one-dimensional interleaved array
@@ -32,5 +33,14 @@ static const ADCConversionGroup {{adc.conf}} = {
   // See ADC channel selection register (ADC_CHSELR) in RM
   chselr: {{#adc.CHSEL}}{{.}}{{#@index !== @last}} \
             | {{/}}{{/each}}
+};
+{{/if}}
+
+{{#if adc.useGpt}}
+static const GPTConfig {{adc.gpt.conf}} = {
+  frequency:    {{adc.gpt.freq}}U, // Hz
+  callback:     {{adc.gpt.callback}},
+  cr2:          0,
+  dier:         0U
 };
 {{/if}}

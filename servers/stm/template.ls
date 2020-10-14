@@ -28,15 +28,27 @@ new class TemplateEngine extends Actor
 
             data = 
                 hal-use: []
+                available-timers: [1, 3, 14]
                 adc: 
                     isContinuous: null
                     driver: "ADCD1"         # ADC Driver
                     conf: "adcgrpcfg1"   # ADCConversionGroup struct
                     callback: "adcReadCallback1"
                     bufferName: "samples_buf1"
+                    useGpt: no 
+                    gpt:
+                        driver:~ -> "GPTD#{@timer}"
+                        timer: 1
+                        conf: "gptCfg1"
+                        callback: "gptCallback1"
+                        freq: 100_000Hz 
+                        waitTicksPerCall: null  # Declare how many ticks to wait per call       
                     CHSEL: []
                     sampling-rate: (rate) -> 
-                        # Usage: samplingRate("28 cycles") # => ADC_SMPR_SMP_13P5
+                        # Usage: 
+                        #       
+                        #       samplingRate("28 cycles") 
+                        #       # => "ADC_SMPR_SMP_13P5"
                         #
                         # See os/hal/ports/STM32/LLD/ADCv1/hal_adc_lld.h -> Sampling rates
                         '''
@@ -54,9 +66,10 @@ new class TemplateEngine extends Actor
                             ?.match(/#define\s+(\w+)\s+/) .1
 
                     # See os/common/ext/ST/STM32F0xx/stm32f030x6.h
-                    cfgr1: 
-                        * \ADC_CFGR1_CONT       # TODO: set only when continuous mode is selected
-                        * \ADC_CFGR1_RES_12BIT
+                    cfgr1:~ ->
+                        res = []
+                            ..push \ADC_CFGR1_CONT if @isContinuous
+                            ..push \ADC_CFGR1_RES_12BIT
 
             try
                 [mcu, pinout] = obj-to-pairs msg.data.config .0
@@ -92,9 +105,6 @@ new class TemplateEngine extends Actor
                     |> map (x) -> "GPIO#{x}"
 
                 # Generate parameters 
-                # 
-                # NOTE: "Reading the Reference Manual is not optional": http://www.chibios.com/forum/viewtopic.php?t=3756#p27969
-                #
                 data.GPIO_REGISTERS = <[ MODER OTYPER OSPEEDR PUPDR ODR AFRL AFRH ]> 
                 # get the Alternate Function table
                 try
@@ -137,9 +147,14 @@ new class TemplateEngine extends Actor
                                     "PIN_MODE_OUTPUT(#io)"
                                 | <[ adcIn ]> =>
                                     data.hal-use.push "ADC"  
-                                    if setup.config.mode is \continuous 
+                                    if data.adc.conversion is \continuous 
                                         data.adc.isContinuous = yes 
-                                        data.adc.period = setup.config.period
+                                    else if setup.config.conversion is \onDemand
+                                        if setup.config.poll is \periodic
+                                            data.adc.useGpt = yes 
+                                            data.hal-use.push "GPT"
+                                            freq = 1000 / setup.config.period # Hz
+                                            data.adc.gpt.waitTicksPerCall = parse-int(data.adc.gpt.freq / freq)
                                     ch-num = setup.peripheral.stm.match /(\d+)/ .1 
                                     data.adc.CHSEL.push "ADC_CHSELR_CHSEL#{ch-num}"
                                     "PIN_MODE_ANALOG(#io)" 
@@ -200,19 +215,21 @@ new class TemplateEngine extends Actor
 
 
                 *********************************************************/
-                
-                # Compile the templates found in #templates directory
-                for template in templates
-                    file = fs.readFileSync "#{dir}/#{template}", "utf-8"
-                    compiled = ractive-compile file, data
+                try
+                    # Compile the templates found in #templates directory
+                    for template in templates
+                        file = fs.readFileSync "#{dir}/#{template}", "utf-8"
+                        compiled = ractive-compile file, data
 
-                    # Replace Mustache variables in file/folder names
-                    template = mustache-apply template, do
-                        mcu: data.mcu.chibiDef
+                        # Replace Mustache variables in file/folder names
+                        template = mustache-apply template, do
+                            mcu: data.mcu.chibiDef
 
-                    response[template] = compiled
-                response["config.json"] =  config-orig 
-                s.go!
+                        response[template] = compiled
+                    response["config.json"] =  config-orig 
+                    s.go!
+                catch 
+                    s.go(e)
             else 
                 response["error"] = "Unknown MCU: #{mcu}"
             err <~ b.joined
