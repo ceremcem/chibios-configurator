@@ -6,7 +6,9 @@ extern void init_io(void); // defined in io.c
 
 {{#if halUse.includes("ADC")}}
 void {{adc.callback}}(ADCDriver *adcp, adcsample_t *buffer, size_t n);
+{{#adc.useGpt}}
 static void {{adc.gpt.callback}}(GPTDriver *gptp);
+{{/}}
 
 #define ADC_BUF_DEPTH 1 
 #define ADC_CH_NUM {{adc.CHSEL.length}}    // How many channel you use at same time
