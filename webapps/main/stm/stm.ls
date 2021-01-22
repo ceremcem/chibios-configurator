@@ -7,6 +7,7 @@ require! 'components/router/tools': {scroll-to}
 require! './peripheral-defs': {replace-map, peripheralConfigs}
 require! 'aea': {merge, create-download}
 require! 'jszip': JSZip
+require! 'dcs/browser': {Signal}
 
 storage = new BrowserStorage "scene.stm"
 
@@ -131,6 +132,13 @@ Ractive.components['stm'] = Ractive.extend do
             return unless dd=ctx?component 
             @set \selected.mcu, item.id
             @set \selected.datasheet, null
+            s = new Signal
+            if dd.actor._last_login is 0
+                msg <~ dd.actor.once-topic 'app.dcs.connect'
+                s.go!
+            else
+                s.go!
+            <~ s.wait
             err, res <~ dd.actor.send-request "@datasheet.mcu-info", {id: item.id}
             if datasheet=res?.data?.info
                 @set \selected.datasheet, datasheet
