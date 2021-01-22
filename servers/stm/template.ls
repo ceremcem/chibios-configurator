@@ -11,12 +11,7 @@ require! 'prelude-ls': {
 require! './read-xml': {read-xml}
 require! './read-lson': {read-lson}
 require! 'fancy-log': log 
-
-
-mustache-apply = (str, data) -> 
-    for k, v of data
-        str = str.replace (new RegExp "{{\s*#{k}\s*}}", 'gi'), v
-    return str 
+require! './mustache-apply': {mustache-apply}
 
 SECOND_CHAR = 1
 
