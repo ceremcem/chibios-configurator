@@ -3,7 +3,7 @@ require! '../../config'
 require! 'fs'
 require! 'prelude-ls': {map, flatten, unique, find, filter}
 require! 'fancy-log': log 
-require! './read-xml': {read-xml}
+require! './lib': {read-xml}
 
 new class Datasheet extends Actor
     action: ->

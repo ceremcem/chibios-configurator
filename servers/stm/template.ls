@@ -1,17 +1,17 @@
 require! 'dcs': {DcsTcpClient, Actor, SignalBranch}
 require! '../../config'
 require! 'fs'
-require! './ractive-template': {ractive-compile}
-require! './readdir-sync-recursive': {readdirSyncRecursive}
-require! './supported-mcus.json'
 require! 'prelude-ls': {
     find, map, pairs-to-obj, 
     obj-to-pairs, group-by, unique, filter
     pairs-to-obj}
-require! './read-xml': {read-xml}
-require! './read-lson': {read-lson}
 require! 'fancy-log': log 
-require! './mustache-apply': {mustache-apply}
+
+require! './generated-db/supported-mcus.json'
+
+require! './lib': {
+    mustache-apply, ractive-compile, readdirSyncRecursive,
+    read-xml, read-lson}
 
 SECOND_CHAR = 1
 

@@ -1,7 +1,8 @@
 #!/bin/bash
 # Description: 
 # Generates ChibiOS MCU family definitions for board.h
-CHIBIOS=${1:-$HOME/curr-projects/aktos/chibi-examples2/ChibiOS}
+set -u
+CHIBIOS=$1
 cd $CHIBIOS
 
 # see http://www.chibios.com/forum/viewtopic.php?f=2&t=5511&p=38572#p38577
