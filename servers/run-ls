@@ -1,13 +1,1 @@
-#!/bin/bash
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-while :; do 
-    if [[ -d "$DIR/scada.js" ]]; then 
-        source $DIR/scada.js/tools/run-ls
-        break
-    fi
-    DIR=$(dirname $DIR)
-    if [[ "$DIR" = "/" ]]; then
-        echo "Scada.js root can not be found."
-        break
-    fi
-done
+../scada.js/tools/run-ls
