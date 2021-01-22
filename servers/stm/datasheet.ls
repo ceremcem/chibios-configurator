@@ -7,7 +7,7 @@ require! './read-xml': {read-xml}
 
 new class Datasheet extends Actor
     action: ->
-        #families = read-xml "./stm-db/mcu/families.xml"
+        families = read-xml "./stm-db/mcu/families.xml" .Families.Family       
         @on-topic \@datasheet.ls.mcu, (msg) ~>
             log "list mcu requested"
             mcu-list = fs.readdirSync './stm-db/mcu'
@@ -18,13 +18,27 @@ new class Datasheet extends Actor
 
         @on-topic "@datasheet.mcu-info", (msg) ~> 
             log "Mcu info requested: #{msg.data.id}"
-            error = false 
+            error = ""
             mcu-info = null 
             try 
                 mcu-info = (read-xml "./stm-db/mcu/#{msg.data.id}.xml").Mcu
             catch 
-                error = e  
-            @send-response msg, {info: mcu-info, error}
+                error += e  
+
+            try
+                family = null 
+                :found for families
+                    for ..SubFamily
+                        for ..Mcu 
+                            if .._attributes.Name is msg.data.id
+                                family = .. 
+                                break found
+            catch 
+                error += e 
+
+            @send-response msg, {info: mcu-info, error, family}
+
+
 
 new DcsTcpClient port: config.dcs-port 
     .login {user: "datasheet", password: "1234"}

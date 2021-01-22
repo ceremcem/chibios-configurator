@@ -142,6 +142,7 @@ Ractive.components['stm'] = Ractive.extend do
             err, res <~ dd.actor.send-request "@datasheet.mcu-info", {id: item.id}
             if datasheet=res?.data?.info
                 @set \selected.datasheet, datasheet
+                @set \selected.family, res?data?family
                 @fire \refreshSelected
             progress (err or res?error)
 

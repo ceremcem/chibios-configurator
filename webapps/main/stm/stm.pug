@@ -14,9 +14,18 @@
                     dropdown(
                         simple-data="{{mcuList}}" 
                         selected-key="{{selected.mcu}}"
-                        on-select="subFamilySelected")
+                        on-select="subFamilySelected"
+                        listen-external="{{false}}")
 
                     .ui.tag.label.mini ({{mcuList.length}})
+
+                    +if('selected.family._attributes.RPN')
+                        span 
+                        span 
+                        span
+                        .ui.label.green
+                            a(href="https://www.st.com/resource/en/datasheet/{{selected.family._attributes.RPN.toLowerCase()}}.pdf"
+                                    ) {{selected.mcu}} Datasheet
 
             //-
                 .row
