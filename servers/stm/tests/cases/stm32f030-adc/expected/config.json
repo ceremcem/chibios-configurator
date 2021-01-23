@@ -1,0 +1,44 @@
+{
+  "STM32F030F4Px": {
+    "6": {
+      "peripheral": {
+        "id": "dout",
+        "name": "Digital Output",
+        "stm": "GPIO",
+        "type": "dout"
+      },
+      "config": {
+        "mode": "pushpull"
+      }
+    },
+    "7": {
+      "peripheral": {
+        "id": "adc-in-1",
+        "name": "Analog Input 1",
+        "stm": "ADC_IN1",
+        "type": "adcIn"
+      },
+      "config": {
+        "conversion": "onDemand",
+        "poll": "periodic",
+        "period": 100
+      }
+    },
+    "19": {
+      "peripheral": {
+        "id": "swdio",
+        "name": "SW Data",
+        "stm": "SYS_SWDIO",
+        "type": "swdio"
+      }
+    },
+    "20": {
+      "peripheral": {
+        "id": "swclk",
+        "name": "SW Clock",
+        "stm": "SYS_SWCLK",
+        "type": "swclk"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# Important Notes 
+
+
+* "Reading the Reference Manual is not optional"
+
+    http://www.chibios.com/forum/viewtopic.php?t=3756#p27969
+
+* #SV4 means that you are calling a normal function from ISR or callback, only I-Class functions can be called in that context and only within a critical zone.                
+
+    http://www.chibios.com/forum/viewtopic.php?t=2173#p17466
+
+    
