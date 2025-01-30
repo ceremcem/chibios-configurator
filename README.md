@@ -12,15 +12,15 @@ https://aktos.io/chibi-config/
 2. `./scada.js/venv`
 3. Install dependencies: `make install-deps`
 
-(production)
-4. 
+### Production: 
+
 ```
 make release-build
 exit
 ./production.service
 ```
 
-(development)
+### Development: 
 4. `./ui-dev.service`
 5. Use your favourite text editor to edit files.
 3. Open http://localhost:4013 to see the application. 
